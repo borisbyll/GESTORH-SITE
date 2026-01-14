@@ -295,11 +295,30 @@
         <p style="margin-top: 40px; font-size: 0.75rem; opacity: 0.4;">© 2026 GESTORH – TOUS DROITS RÉSERVÉS</p>
     </footer>
 
-    <script>
+   <script>
+        // 1. GESTION DU MENU MOBILE (OUVERTURE & FERMETURE AUTOMATIQUE)
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
-        menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        const navItems = document.querySelectorAll('.nav-links a');
 
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Ferme le menu dès qu'on clique sur un lien (résout votre problème sur portable)
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // 2. ENVOI DU FORMULAIRE (VERS MAKE)
         const form = document.getElementById("rdvForm");
         const successMsg = document.getElementById("success-message");
         const submitBtn = document.getElementById("submitBtn");
@@ -327,14 +346,20 @@
             }
         });
 
+        // 3. ANIMATION D'APPARITION AU SCROLL (REVEAL)
         const reveal = () => {
             document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                    el.classList.add('active');
+                }
             });
         };
         window.addEventListener('scroll', reveal);
         window.addEventListener('load', reveal);
     </script>
 </body>
+</html>
+</body>
 
 </html>
+
