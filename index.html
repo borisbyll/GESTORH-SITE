@@ -376,7 +376,7 @@
         </div>
     </section>
 
-    <footer class="footer">
+<footer class="footer">
         <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH" style="height: 55px; filter: brightness(0) invert(1); margin-bottom: 30px;">
         <p>Lomé, Togo • +228 90 03 61 87 / 98 91 23 69</p>
         <div class="social-icons">
@@ -386,8 +386,12 @@
         <p style="margin-top: 40px; font-size: 0.75rem; opacity: 0.4;">© 2026 GESTORH – TOUS DROITS RÉSERVÉS</p>
     </footer>
 
+    <a href="https://wa.me/22898912369?text=Bonjour%20GESTORH,%20je%20souhaite%20plus%20d'informations%20sur%20vos%20services" class="wa-floating" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
    <script>
-        // 1. GESTION DU MENU MOBILE (OUVERTURE & FERMETURE AUTOMATIQUE)
+        // 1. GESTION DU MENU MOBILE
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
         const navItems = document.querySelectorAll('.nav-links a');
@@ -399,7 +403,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Ferme le menu dès qu'on clique sur un lien (résout votre problème sur portable)
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -409,7 +412,7 @@
             });
         });
 
-        // 2. ENVOI DU FORMULAIRE (VERS MAKE)
+        // 2. ENVOI DU FORMULAIRE
         const form = document.getElementById("rdvForm");
         const successMsg = document.getElementById("success-message");
         const submitBtn = document.getElementById("submitBtn");
@@ -437,7 +440,7 @@
             }
         });
 
-        // 3. ANIMATION D'APPARITION AU SCROLL (REVEAL)
+        // 3. ANIMATION REVEAL
         const reveal = () => {
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 50) {
@@ -453,6 +456,7 @@
 </body>
 
 </html>
+
 
 
 
