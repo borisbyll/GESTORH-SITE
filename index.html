@@ -129,13 +129,14 @@
     color: white;
 }
 
-/* SECTION TÉMOIGNAGES */
+/* SECTION TÉMOIGNAGES OPTIMISÉE */
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
+
 .testi-card {
     background: var(--white);
     padding: 30px;
@@ -143,34 +144,40 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     position: relative;
     border-left: 5px solid var(--amber);
-    
-    /* AJOUTS POUR L'ALIGNEMENT PARFAIT */
+    /* Flexbox pour l'alignement vertical parfait */
     display: flex;
     flex-direction: column;
-    height: 100%; /* Force la même hauteur pour toutes les cartes */
-} 
-.testi-author-block {
-    margin-top: auto; /* Magie du CSS : pousse le nom vers le bas de la carte */
-    padding-top: 20px;
+    height: 100%;
 }
+
 .testi-card i.fa-quote-left {
     color: var(--amber);
     font-size: 1.5rem;
     margin-bottom: 15px;
     display: block;
 }
+
 .testi-text {
     font-style: italic;
     font-size: 0.95rem;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Permet au texte de prendre l'espace nécessaire */
 }
+
+.testi-author-block {
+    margin-top: auto; /* Pousse ce bloc tout en bas de la carte */
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
 .testi-author {
     font-weight: 800;
     color: var(--primary);
     font-size: 0.9rem;
     text-transform: uppercase;
 }
+
 .testi-role {
     font-size: 0.8rem;
     color: var(--teal);
@@ -473,6 +480,7 @@
     </script>
 </body>
 </html>
+
 
 
 
