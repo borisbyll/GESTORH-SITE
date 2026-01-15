@@ -143,6 +143,15 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     position: relative;
     border-left: 5px solid var(--amber);
+    
+    /* AJOUTS POUR L'ALIGNEMENT PARFAIT */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Force la même hauteur pour toutes les cartes */
+} 
+.testi-author-block {
+    margin-top: auto; /* Magie du CSS : pousse le nom vers le bas de la carte */
+    padding-top: 20px;
 }
 .testi-card i.fa-quote-left {
     color: var(--amber);
@@ -453,6 +462,7 @@
     </script>
 </body>
 </html>
+
 
 
 
