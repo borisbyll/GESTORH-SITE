@@ -131,64 +131,54 @@
 
 /* SECTION STATS PREMIUM */
 .stats-container {
-    padding: 100px 8%;
-    background: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
-    display: flex;
-    justify-content: center;
+    padding: 80px 5%;
+    background: #ffffff; /* Fond blanc pur pour plus de luxe */
 }
 
 .stats-grid-modern {
     display: grid;
-    /* On force 4 colonnes sur grand écran, et auto sur petit écran */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px; /* Réduction de l'écart pour gagner de la place */
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* On ajuste pour les tablettes (2 par ligne) */
-@media (max-width: 1024px) {
-    .stats-grid-modern {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* On ajuste pour les mobiles (1 par ligne) */
-@media (max-width: 600px) {
-    .stats-grid-modern {
-        grid-template-columns: 1fr;
-    }
+    /* On utilise auto-fit mais avec une taille minimum qui préserve le design */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .stat-card-modern {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 30px 15px; /* Réduction du padding interne */
-    border-radius: 20px;
+    background: #f8faff;
+    padding: 50px 30px;
+    border-radius: 25px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(44, 74, 154, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    border: 1px solid #e2e8f0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card-modern:hover {
+    background: var(--primary);
+    transform: translateY(-10px);
+}
+
+/* Changement de couleur au survol pour tout le contenu */
+.stat-card-modern:hover .stat-number, 
+.stat-card-modern:hover .stat-label,
+.stat-card-modern:hover i {
+    color: white !important;
 }
 
 .stat-number {
-    font-size: 2.2rem; /* Légère réduction pour éviter que le texte déborde */
+    font-size: 3.5rem; /* On redonne de la puissance au chiffre */
     font-weight: 800;
     color: var(--primary);
-    margin-bottom: 5px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .stat-label {
-    font-size: 0.75rem; /* Texte un peu plus petit pour rester sur une ligne */
-    font-weight: 700;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 0.5px;
 }
-
 /* SECTION TÉMOIGNAGES OPTIMISÉE */
 .testimonials-grid {
     display: grid;
@@ -574,6 +564,7 @@
     </script>
 </body>
 </html>
+
 
 
 
