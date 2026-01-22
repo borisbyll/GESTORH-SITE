@@ -94,7 +94,288 @@
         .section-subtitle { text-align: center; color: var(--amber); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 60px; }
 
         /* EXPERTISES */
-        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(
+        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .expert-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: var(--transition); }
+        .expert-card:hover { transform: scale(1.02); }
+        .expert-img { height: 250px; background-size: cover; background-position: center; }
+        .expert-content { padding: 35px; }
+        .expert-content h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
+        .expert-content ul { list-style: none; font-size: 0.95rem; }
+        .expert-content li { margin-bottom: 12px; display: flex; align-items: center; }
+        .expert-content i { color: var(--amber); margin-right: 12px; }
+
+        /* TÉMOIGNAGES */
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testi-card { background: white; padding: 40px; border-radius: 20px; border-left: 6px solid var(--amber); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; }
+        .testi-card:hover { transform: translateY(-5px); background: var(--bg-light); }
+        .testi-text { font-style: italic; margin-bottom: 25px; font-size: 1rem; color: #475569; }
+        .testi-author { font-weight: 800; font-size: 0.9rem; text-transform: uppercase; color: var(--primary); }
+        .testi-role { color: var(--accent); font-size: 0.8rem; font-weight: 600; }
+
+        /* SECTION RENDEZ-VOUS (STRUCTURE INITIALE) */
+        .contact-section { background: var(--bg-light); padding: 100px 8%; }
+        .contact-container { 
+            max-width: 1100px; margin: 0 auto; display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; gap: 40px; 
+            background: white; padding: 50px; border-radius: 25px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+        }
+        .hours-box { background: var(--accent); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.8rem; margin-bottom: 8px; color: var(--primary); }
+        input, select, textarea { width: 100%; padding: 15px; border: 1px solid #e2e8f0; border-radius: 10px; font-family: inherit; }
+        .submit-btn { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .submit-btn:hover { background: var(--accent); }
+        
+        .wa-direct { background: #f0fdf4; padding: 40px; border-radius: 20px; text-align: center; border: 2px dashed #25d366; align-self: start; }
+        .wa-btn { display: inline-block; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; }
+
+        /* FOOTER PRESTIGE */
+        footer { background: var(--primary); color: white; padding: 80px 8% 40px; text-align: center; }
+        .footer-logo img { height: 70px; filter: brightness(0) invert(1); margin-bottom: 30px; }
+        .socials { margin-bottom: 30px; }
+        .socials a { color: white; font-size: 1.8rem; margin: 0 20px; transition: 0.3s; }
+        .socials a:hover { color: var(--amber); transform: scale(1.2); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; font-size: 0.8rem; opacity: 0.5; }
+
+        /* WHATSAPP FLOTTANT */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; 
+            width: 65px; height: 65px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: white;
+            font-size: 2rem; z-index: 3000; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: pulse-wa 2s infinite;
+        }
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* MOBILE NAVIGATION */
+        @media (max-width: 1024px) {
+            .menu-btn { display: block; }
+            .nav-links { 
+                position: fixed; top: 100px; right: -100%; width: 100%; height: calc(100vh - 100px);
+                background: white; flex-direction: column; padding: 50px 0; transition: 0.4s ease-in-out;
+                z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 20px 0; }
+            .contact-container { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2.2rem; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
+        <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#expertises">Expertises</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#contact">Prendre RDV</a></li>
+        </ul>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="reveal active">
+            <p>Conseil • Psychologie • Coaching</p>
+            <h1>Performez par l'Équilibre Humain</h1>
+            <a href="#contact" class="btn-cta">Demander un diagnostic</a>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stats-grid">
+            <div class="stat-card reveal">
+                <i class="fas fa-building"></i>
+                <span class="stat-num">120+</span>
+                <span class="stat-lab">Entreprises</span>
+            </div>
+            <div class="stat-card reveal">
+                <i class="fas fa-users"></i>
+                <span class="stat-num">850+</span>
+                <span class="stat-lab">Salariés Formés</span>
+            </div>
+            <div class="stat-card reveal">
+                <i class="fas fa-heart"></i>
+                <span class="stat-num">45+</span>
+                <span class="stat-lab">Harmonies Couples</span>
+            </div>
+            <div class="stat-card reveal">
+                <i class="fas fa-award"></i>
+                <span class="stat-num">98%</span>
+                <span class="stat-lab">Satisfaction</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal" id="expertises">
+        <h2 class="section-title">Nos Expertises</h2>
+        <p class="section-subtitle">Un accompagnement d'exception à Lomé</p>
+        <div class="expert-grid">
+            <div class="expert-card reveal">
+                <div class="expert-img" style="background-image: url('financial-advisor-sharing-his-expertise-regarding-pension-retirement-plans.jpg');"></div>
+                <div class="expert-content">
+                    <h3>Solutions RH</h3>
+                    <ul><li><i class="fas fa-check-circle"></i> Audit Stratégique</li><li><i class="fas fa-check-circle"></i> Recrutement de Cadres</li><li><i class="fas fa-check-circle"></i> Digitalisation RH</li></ul>
+                </div>
+            </div>
+            <div class="expert-card reveal">
+                <div class="expert-img" style="background-image: url('portrait-elegant-professional-businesswoman.jpg');"></div>
+                <div class="expert-content">
+                    <h3>Leadership</h3>
+                    <ul><li><i class="fas fa-check-circle"></i> Executive Coaching</li><li><i class="fas fa-check-circle"></i> Team Building</li><li><i class="fas fa-check-circle"></i> Gestion des conflits</li></ul>
+                </div>
+            </div>
+            <div class="expert-card reveal">
+                <div class="expert-img" style="background-image: url('front-view-black-family-posing-studio.jpg');"></div>
+                <div class="expert-content">
+                    <h3>Psychologie</h3>
+                    <ul><li><i class="fas fa-check-circle"></i> Harmonie de Couple</li><li><i class="fas fa-check-circle"></i> Gestion du Stress</li><li><i class="fas fa-check-circle"></i> Psychologie Clinique</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal" id="temoignages" style="background: #fafafa;">
+        <h2 class="section-title">Ils nous font confiance</h2>
+        <p class="section-subtitle">Ce que disent nos partenaires</p>
+        <div class="testi-grid">
+            <div class="testi-card reveal">
+                <p class="testi-text">"Une restructuration qui a sauvé notre climat social. La productivité a suivi immédiatement."</p>
+                <p class="testi-author">Directeur Général</p>
+                <p class="testi-role">Secteur BTP - Togo</p>
+            </div>
+            <div class="testi-card reveal">
+                <p class="testi-text">"L'approche psychologique du cabinet est unique. Un soutien précieux pour nos cadres."</p>
+                <p class="testi-author">Responsable RH</p>
+                <p class="testi-role">Institution Financière</p>
+            </div>
+            <div class="testi-card reveal">
+                <p class="testi-text">"Un coaching qui m'a permis de retrouver une vision claire et de mieux déléguer."</p>
+                <p class="testi-author">Promoteur PME</p>
+                <p class="testi-role">Logistique</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section reveal" id="contact">
+        <h2 class="section-title">Rendez-vous</h2>
+        <p class="section-subtitle">Planifions votre prochaine étape</p>
+        
+        <div class="contact-container">
+            <div class="contact-form">
+                <div class="hours-box">
+                    <h4><i class="far fa-clock"></i> Horaires d'ouverture</h4>
+                    <p>Lundi au Vendredi : 08h00 – 18h00</p>
+                </div>
+                <div id="success-msg" style="display:none; color:green; padding:20px; font-weight:700;">✓ Demande envoyée avec succès !</div>
+                <form id="rdvForm" action="https://hook.eu1.make.com/tq72rmy6zoybulfyu8x26kmluc6gy5c5" method="POST">
+                    <div class="form-group">
+                        <label>NOM COMPLET</label>
+                        <input type="text" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>WHATSAPP</label>
+                        <input type="tel" name="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>DOMAINE</label>
+                        <select name="service" required>
+                            <option value="RH">Solutions RH</option>
+                            <option value="Coaching">Coaching</option>
+                            <option value="Psy">Psychologie</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Confirmer la demande</button>
+                </form>
+            </div>
+            <div class="wa-direct">
+                <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366;"></i>
+                <h3>Urgence ?</h3>
+                <p>Besoin d'une réponse immédiate ? Contactez-nous en un clic.</p>
+                <a href="https://wa.me/22898912369" class="wa-btn">Discuter sur WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH">
+        </div>
+        <div class="socials">
+            <a href="https://www.linkedin.com/company/cabinet-gestorh/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/share/1N1L3mFM6w/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p>Lomé, Togo • +228 98 91 23 69</p>
+        <div class="footer-bottom">
+            © 2026 GESTORH | Excellence RH & Psychologie | Tous droits réservés.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/22898912369" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        // MENU MOBILE AVEC FERMETURE AUTO
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = menuBtn.querySelector('i');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if(navLinks.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // FORMULAIRE
+        const form = document.getElementById("rdvForm");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById("submitBtn");
+            btn.innerText = "Envoi...";
+            try {
+                await fetch(form.action, { method: 'POST', body: new FormData(form) });
+                form.style.display = "none";
+                document.getElementById("success-msg").style.display = "block";
+            } catch (err) {
+                alert("Erreur. Tentez via WhatsApp.");
+                btn.innerText = "Réessayer";
+            }
+        });
+
+        // REVEAL ANIMATIONS
+        const reveal = () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        window.addEventListener('load', reveal);
+    </script>
+</body>
+</html>
 
 
 
