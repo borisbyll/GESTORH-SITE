@@ -129,6 +129,33 @@
     color: white;
 }
 
+        .stats-bar {
+    background: var(--primary);
+    color: white;
+    padding: 60px 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--amber);
+    margin-bottom: 5px;
+}
+.stat-item p {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.stat-item i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
 /* SECTION TÉMOIGNAGES OPTIMISÉE */
 .testimonials-grid {
     display: grid;
@@ -281,6 +308,29 @@
             </div>
         </div>
     </section>
+
+<section class="stats-bar reveal">
+    <div class="stat-item">
+        <i class="fas fa-building"></i>
+        <h3>120+</h3>
+        <p>Entreprises Accompagnées</p>
+    </div>
+    <div class="stat-item">
+        <i class="fas fa-users"></i>
+        <h3>850+</h3>
+        <p>Salariés Formés</p>
+    </div>
+    <div class="stat-item">
+        <i class="fas fa-heart"></i>
+        <h3>45+</h3>
+        <p>Couples & Familles Soutenus</p>
+    </div>
+    <div class="stat-item">
+        <i class="fas fa-smile"></i>
+        <h3>98%</h3>
+        <p>Taux de Satisfaction</p>
+    </div>
+</section>
     
 <section class="section reveal" id="temoignages">
     <h2 class="section-title">Ils nous font confiance</h2>
@@ -476,6 +526,7 @@
     </script>
 </body>
 </html>
+
 
 
 
