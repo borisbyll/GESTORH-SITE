@@ -6,8 +6,15 @@
     <title>GESTORH | Cabinet Conseil RH & Psychologie</title>
 
     <meta name="description" content="GESTORH : Excellence en solutions RH et accompagnement psychologique à Lomé.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JV77S0NRS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6JV77S0NRS');
+    </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Afacad:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -16,111 +23,122 @@
             --accent: #2c4a9a;
             --amber: #f2a93b;
             --white: #ffffff;
-            --bg-light: #f1f5f9;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-light: #f8fafc;
+            --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-        body { font-family: 'Outfit', sans-serif; color: var(--primary); line-height: 1.6; background: var(--white); overflow-x: hidden; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body { font-family: 'Outfit', sans-serif; color: var(--primary); line-height: 1.6; background: var(--white); }
 
-        /* HEADER PROFESSIONNEL */
+        /* HEADER & LOGO AGRANDI */
         header {
-            position: fixed; top: 0; width: 100%; height: 85px;
+            position: fixed; top: 0; width: 100%; height: 100px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 8%; background: rgba(255, 255, 255, 0.98);
-            z-index: 2000; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            z-index: 2000; box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
-        .logo img { height: 60px; width: auto; }
+        .logo img { height: 80px; width: auto; transition: var(--transition); } /* Logo agrandi */
         
-        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 35px; }
         .nav-links a { 
             text-decoration: none; color: var(--primary); font-weight: 600; 
-            font-size: 0.9rem; text-transform: uppercase; transition: var(--transition);
+            font-size: 0.95rem; text-transform: uppercase; transition: var(--transition);
         }
         .nav-links a:hover { color: var(--accent); }
 
         .menu-btn { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent); }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                         url('two-espionage-agents-reviewing-confidential-documents-stylish-library.jpg') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
             padding: 0 10%;
         }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero p { font-family: 'Afacad', sans-serif; font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; opacity: 0.9; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; margin-bottom: 25px; line-height: 1.2; }
+        .hero p { font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 35px; opacity: 0.9; }
 
         .btn-cta {
             background: var(--amber); color: white; padding: 20px 45px;
-            text-decoration: none; font-weight: 700; border-radius: 8px;
+            text-decoration: none; font-weight: 700; border-radius: 5px;
             transition: var(--transition); display: inline-block; text-transform: uppercase;
         }
-        .btn-cta:hover { transform: translateY(-5px); background: #e0962b; box-shadow: 0 10px 20px rgba(242, 169, 59, 0.3); }
+        .btn-cta:hover { transform: translateY(-3px); background: #e0962b; }
 
-        /* STATS - GARANTIES SUR UNE LIGNE */
+        /* STATS BAR */
         .stats-bar { padding: 80px 8%; background: var(--bg-light); }
         .stats-grid { 
             display: grid; grid-template-columns: repeat(4, 1fr); 
-            gap: 25px; max-width: 1250px; margin: 0 auto;
+            gap: 30px; max-width: 1200px; margin: 0 auto;
         }
-        .stat-card { 
-            background: var(--white); padding: 40px 20px; border-radius: 15px; 
-            text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-bottom: 4px solid var(--accent);
-        }
-        .stat-card span { display: block; }
-        .stat-num { font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 5px; }
-        .stat-lab { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
-
-        /* SECTIONS */
-        .section { padding: 100px 8%; text-align: center; }
-        .section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; color: var(--primary); }
-        .section-subtitle { color: var(--amber); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 60px; }
+        .stat-card { text-align: center; }
+        .stat-num { font-size: 3.2rem; font-weight: 800; color: var(--accent); display: block; }
+        .stat-lab { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 1px; }
 
         /* EXPERTISES */
-        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .expert-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); text-align: left; }
-        .expert-img { height: 240px; background-size: cover; background-position: center; }
+        .section { padding: 100px 8%; }
+        .section-title { font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; color: var(--amber); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 60px; }
+
+        .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .expert-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .expert-img { height: 250px; background-size: cover; background-position: center; }
         .expert-content { padding: 35px; }
         .expert-content h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
-        .expert-content ul { list-style: none; }
-        .expert-content ul li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.95rem; }
-        .expert-content i { color: var(--amber); margin-right: 10px; }
+        .expert-content ul { list-style: none; font-size: 0.95rem; }
+        .expert-content li { margin-bottom: 10px; display: flex; align-items: center; }
+        .expert-content i { color: var(--amber); margin-right: 10px; font-size: 0.8rem; }
 
-        /* FORMULAIRE */
-        .contact-box { max-width: 900px; margin: 0 auto; background: white; padding: 50px; border-radius: 25px; box-shadow: 0 25px 60px rgba(0,0,0,0.06); text-align: left; }
-        .f-group { margin-bottom: 25px; }
-        input, select, textarea { width: 100%; padding: 18px; border: 1px solid #e2e8f0; border-radius: 10px; font-family: inherit; font-size: 1rem; }
-        input:focus { border-color: var(--accent); outline: none; }
+        /* SECTION RENDEZ-VOUS (INTACTE SELON VOTRE CODE ORIGINAL) */
+        .contact-section { background: #f1f5f9; padding: 100px 8%; }
+        .contact-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .contact-form h2 { font-size: 2.2rem; margin-bottom: 30px; color: var(--primary); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
+        }
+        .submit-btn { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .submit-btn:hover { background: var(--accent); }
 
-        /* FOOTER */
-        footer { padding: 80px 8% 40px; background: var(--primary); color: white; text-align: center; }
-        .socials a { color: white; font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
-        .socials a:hover { color: var(--amber); }
+        .wa-direct { background: #e7f5ee; padding: 40px; border-radius: 15px; text-align: center; border: 2px dashed #25d366; }
+        .wa-btn { display: inline-block; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; }
 
-        /* MOBILE NAV STYLES */
+        /* FOOTER REVISITÉ */
+        footer { background: var(--primary); color: white; padding: 80px 8% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; text-align: left; }
+        .footer-logo img { height: 70px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+        .footer-about { opacity: 0.7; font-size: 0.9rem; max-width: 400px; }
+        .footer-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 25px; color: var(--amber); text-transform: uppercase; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: white; text-decoration: none; opacity: 0.7; transition: 0.3s; }
+        .footer-links a:hover { opacity: 1; color: var(--amber); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; text-align: center; font-size: 0.8rem; opacity: 0.5; letter-spacing: 1px; }
+
+        /* MOBILE NAV */
         @media (max-width: 1024px) {
-            .menu-btn { display: block; }
+            .menu-btn { display: block; z-index: 3000; }
             .nav-links { 
-                position: fixed; top: 85px; right: -100%; width: 100%; height: calc(100vh - 85px);
-                background: white; flex-direction: column; padding: 50px 0; transition: var(--transition);
-                z-index: 1000;
+                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+                background: white; flex-direction: column; padding: 120px 40px; transition: 0.4s ease;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 2500;
             }
             .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; }
+            .contact-container { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 2.2rem; }
+            header { height: 80px; padding: 0 5%; }
+            .logo img { height: 60px; }
         }
 
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; z-index: 3000; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
@@ -133,16 +151,16 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#expertises">Expertises</a></li>
-            <li><a href="#temoignages">Témoignages</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Rendez-vous</a></li>
+            <li><a href="https://wa.me/22898912369" style="color:var(--amber)">Urgence <i class="fab fa-whatsapp"></i></a></li>
         </ul>
     </header>
 
     <section class="hero" id="accueil">
         <div class="reveal active">
             <p>Conseil • Psychologie • Coaching</p>
-            <h1>Performez par l'Équilibre Humain</h1>
-            <a href="#contact" class="btn-cta">Prendre rendez-vous</a>
+            <h1>L'Humain au Cœur de la Performance</h1>
+            <a href="#contact" class="btn-cta">Demander un diagnostic</a>
         </div>
     </section>
 
@@ -168,103 +186,134 @@
     </section>
 
     <section class="section reveal" id="expertises">
-        <h2 class="section-title">Nos Domaines</h2>
-        <p class="section-subtitle">L'excellence au cœur de Lomé</p>
+        <h2 class="section-title">Nos Expertises</h2>
+        <p class="section-subtitle">Un accompagnement sur mesure</p>
         <div class="expert-grid">
             <div class="expert-card">
                 <div class="expert-img" style="background-image: url('financial-advisor-sharing-his-expertise-regarding-pension-retirement-plans.jpg');"></div>
                 <div class="expert-content">
                     <h3>Solutions RH</h3>
-                    <ul><li><i class="fas fa-check"></i> Audit Stratégique</li><li><i class="fas fa-check"></i> Recrutement</li><li><i class="fas fa-check"></i> Digitalisation</li></ul>
+                    <ul><li><i class="fas fa-circle"></i> Audit & Stratégie</li><li><i class="fas fa-circle"></i> Recrutement Cadres</li><li><i class="fas fa-circle"></i> Digitalisation RH</li></ul>
                 </div>
             </div>
             <div class="expert-card">
                 <div class="expert-img" style="background-image: url('portrait-elegant-professional-businesswoman.jpg');"></div>
                 <div class="expert-content">
-                    <h3>Leadership</h3>
-                    <ul><li><i class="fas fa-check"></i> Coaching de Dirigeants</li><li><i class="fas fa-check"></i> Team Building</li><li><i class="fas fa-check"></i> Gestion des conflits</li></ul>
+                    <h3>Coaching & Leadership</h3>
+                    <ul><li><i class="fas fa-circle"></i> Executive Coaching</li><li><i class="fas fa-circle"></i> Team Building</li><li><i class="fas fa-circle"></i> Gestion des conflits</li></ul>
                 </div>
             </div>
             <div class="expert-card">
                 <div class="expert-img" style="background-image: url('front-view-black-family-posing-studio.jpg');"></div>
                 <div class="expert-content">
-                    <h3>Bien-être</h3>
-                    <ul><li><i class="fas fa-check"></i> Psychologie Clinique</li><li><i class="fas fa-check"></i> Harmonie de Couple</li><li><i class="fas fa-check"></i> Gestion du Stress</li></ul>
+                    <h3>Psychologie</h3>
+                    <ul><li><i class="fas fa-circle"></i> Thérapie de Couple</li><li><i class="fas fa-circle"></i> Soutien Clinique</li><li><i class="fas fa-circle"></i> Bien-être au travail</li></ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section reveal" id="contact" style="background: var(--bg-light);">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Planifions votre prochaine étape</p>
-        <div class="contact-box">
-            <div id="success-message" style="display:none; text-align:center; padding: 40px;">
-                <i class="fas fa-circle-check" style="font-size: 4rem; color: var(--accent); margin-bottom: 20px;"></i>
-                <h3>Demande enregistrée.</h3>
-                <p>Nous vous recontacterons très rapidement.</p>
-            </div>
-            <form id="rdvForm" action="https://hook.eu1.make.com/tq72rmy6zoybulfyu8x26kmluc6gy5c5" method="POST">
-                <div class="f-group"><input type="text" name="nom" placeholder="VOTRE NOM COMPLET" required></div>
-                <div class="f-group"><input type="tel" name="tel" placeholder="TÉLÉPHONE (WHATSAPP)" required></div>
-                <div class="f-group">
-                    <select name="service" required>
-                        <option value="">OBJET DU RENDEZ-VOUS...</option>
-                        <option value="RH">Solutions RH</option>
-                        <option value="Coaching">Leadership & Coaching</option>
-                        <option value="Psy">Psychologie & Couple</option>
-                    </select>
+    <section class="contact-section" id="contact">
+        <div class="contact-container reveal">
+            <div class="contact-form">
+                <h2>Prendre RDV</h2>
+                <div id="success-msg" style="display:none; background:#dcfce7; padding:20px; border-radius:10px; color:#166534; margin-bottom:20px;">
+                    Merci ! Votre demande a été transmise.
                 </div>
-                <textarea name="msg" rows="4" placeholder="MESSAGE PRÉCIS" required></textarea>
-                <button type="submit" class="btn-cta" style="width:100%; border:none; cursor:pointer; margin-top:20px;">Confirmer la demande</button>
-            </form>
+                <form id="rdvForm" action="https://hook.eu1.make.com/tq72rmy6zoybulfyu8x26kmluc6gy5c5" method="POST">
+                    <div class="form-group"><input type="text" name="nom" placeholder="Votre nom complet" required></div>
+                    <div class="form-group"><input type="tel" name="tel" placeholder="Téléphone WhatsApp" required></div>
+                    <div class="form-group">
+                        <select name="service" required>
+                            <option value="">Domaine d'intervention...</option>
+                            <option value="RH">Ressources Humaines</option>
+                            <option value="Coaching">Coaching / Leadership</option>
+                            <option value="Psy">Psychologie / Couple</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea name="message" rows="4" placeholder="Décrivez brièvement votre besoin"></textarea></div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Envoyer la demande</button>
+                </form>
+            </div>
+            <div class="wa-direct" id="wa-section">
+                <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366;"></i>
+                <h3 style="margin-top:15px;">Besoin immédiat ?</h3>
+                <p>Contactez-nous directement sur WhatsApp pour une réponse en moins de 30 min.</p>
+                <a href="https://wa.me/22898912369" class="wa-btn">Discuter maintenant</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" style="height: 55px; filter: brightness(0) invert(1); margin-bottom: 30px;">
-        <div class="socials">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <div class="footer-grid">
+            <div class="footer-col footer-logo">
+                <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH">
+                <p class="footer-about">Cabinet d'excellence dédié à l'optimisation du capital humain et à l'équilibre psychologique des organisations et des familles au Togo.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#expertises">Expertises</a></li>
+                    <li><a href="#contact">Rendez-vous</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Lomé, Togo</li>
+                    <li><i class="fas fa-phone"></i> +228 98 91 23 69</li>
+                    <li><a href="https://linkedin.com"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                </ul>
+            </div>
         </div>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">© 2026 GESTORH | LOMÉ, TOGO</p>
+        <div class="footer-bottom">
+            © 2026 GESTORH | Excellence RH & Psychologie | Tous droits réservés.
+        </div>
     </footer>
 
-    <a href="https://wa.me/22898912369" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <script>
-        // MENU MOBILE ROBUSTE
+        // MENU MOBILE AVEC FERMETURE AUTOMATIQUE
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
         const menuIcon = menuBtn.querySelector('i');
 
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-times'); // Changement d'icône à la fermeture
+            // Change l'icône entre menu et croix
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            }
         });
 
-        // Fermeture automatique au clic sur un lien (résout votre problème)
+        // Fermeture au clic sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                menuIcon.classList.add('fa-bars');
-                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
             });
         });
 
-        // FORMULAIRE
+        // FORMULAIRE (LOGIQUE ORIGINALE)
         const form = document.getElementById("rdvForm");
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            const btn = document.getElementById("submitBtn");
+            btn.innerText = "Envoi...";
             try {
                 await fetch(form.action, { method: 'POST', body: new FormData(form) });
                 form.style.display = "none";
-                document.getElementById("success-message").style.display = "block";
-            } catch (err) { alert("Erreur. Veuillez utiliser WhatsApp."); }
+                document.getElementById("wa-section").style.display = "none";
+                document.getElementById("success-msg").style.display = "block";
+            } catch (err) {
+                alert("Erreur. Tentez via WhatsApp.");
+                btn.innerText = "Réessayer";
+            }
         });
 
-        // REVEAL
+        // REVEAL ANIMATION
         const reveal = () => {
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
