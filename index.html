@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GESTORH | Excellence RH & Psychologie</title>
 
-    <meta name="description" content="GESTORH : Cabinet de conseil haut de gamme à Lomé. RH, Coaching et Psychologie.">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JV77S0NRS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,137 +13,165 @@
       gtag('config', 'G-6JV77S0NRS');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #0f172a; /* Bleu nuit profond */
-            --amber: #c5a059;   /* Or satiné */
-            --light: #f8fafc;
+            --primary: #1e293b; 
+            --accent: #2c4a9a;
+            --amber: #f2a93b;
             --white: #ffffff;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-light: #f8fafc;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* BASE ÉPURÉE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            color: var(--primary); 
-            line-height: 1.8; 
-            background: var(--white);
-            -webkit-font-smoothing: antialiased;
-        }
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+        body { font-family: 'Outfit', sans-serif; color: var(--primary); line-height: 1.6; background: var(--white); overflow-x: hidden; }
 
-        h1, h2, h3 { font-family: 'Cormorant+Garamond', serif; font-weight: 600; }
-
-        /* HEADER MINIMALISTE */
+        /* HEADER XXL */
         header {
-            position: fixed; top: 0; width: 100%; height: 90px;
+            position: fixed; top: 0; width: 100%; height: 110px;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 8%; background: rgba(255, 255, 255, 0.98);
-            z-index: 2000; border-bottom: 1px solid #f1f5f9;
+            z-index: 2000; box-shadow: 0 4px 30px rgba(0,0,0,0.03);
         }
-        .logo img { height: 55px; }
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 40px; }
+        .logo img { height: 90px; width: auto; }
+        
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 35px; }
         .nav-links a { 
-            text-decoration: none; color: var(--primary); 
-            font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; transition: var(--transition);
+            text-decoration: none; color: var(--primary); font-weight: 700; 
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s;
         }
-        .nav-links a:hover { color: var(--amber); }
+        .nav-links a:hover { color: var(--accent); }
 
-        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+        .menu-btn { display: none; font-size: 1.8rem; cursor: pointer; color: var(--accent); }
 
-        /* HERO - IMPACT VISUEL */
+        /* HERO */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
-                        url('two-espionage-agents-reviewing-confidential-documents-stylish-library.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), 
+                        url('two-espionage-agents-reviewing-confidential-documents-stylish-library.jpg') center/cover no-repeat fixed;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
             padding: 0 10%;
         }
-        .hero h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-style: italic; margin-bottom: 20px; }
-        .hero p { font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 40px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; margin-bottom: 25px; line-height: 1.2; }
+        .hero p { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 35px; opacity: 0.9; }
 
-        .btn-gold {
+        .btn-cta {
             background: var(--amber); color: white; padding: 20px 45px;
-            text-decoration: none; font-size: 0.8rem; font-weight: 600;
-            letter-spacing: 2px; border-radius: 2px; transition: var(--transition);
-            display: inline-block; text-transform: uppercase;
+            text-decoration: none; font-weight: 800; border-radius: 5px;
+            transition: var(--transition); display: inline-block; text-transform: uppercase;
         }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); }
+        .btn-cta:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(242, 169, 59, 0.3); }
 
-        /* SECTIONS STATS ÉLÉGANTE (4 sur une ligne sur Desktop) */
-        .stats-section { padding: 100px 8%; background: var(--light); }
+        /* STATS AVEC TITRE ET ICÔNES ANIMÉES */
+        .stats-bar { padding: 100px 8%; background: var(--bg-light); text-align: center; }
         .stats-grid { 
             display: grid; grid-template-columns: repeat(4, 1fr); 
-            gap: 20px; max-width: 1200px; margin: 0 auto;
+            gap: 25px; max-width: 1200px; margin: 0 auto;
         }
-        .stat-item { text-align: center; padding: 40px 20px; }
-        .stat-num { font-size: 3.5rem; display: block; color: var(--amber); margin-bottom: 5px; }
-        .stat-txt { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; opacity: 0.7; }
+        .stat-card { 
+            text-align: center; background: white; padding: 40px 20px; 
+            border-radius: 20px; transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .stat-card i { 
+            font-size: 2.5rem; color: var(--amber); margin-bottom: 15px; 
+            display: block; transition: 0.4s; 
+        }
+        .stat-card:hover { transform: translateY(-10px); }
+        .stat-card:hover i { transform: scale(1.2) rotate(5deg); color: var(--accent); }
+        .stat-num { font-size: 3rem; font-weight: 800; color: var(--primary); display: block; }
+        .stat-lab { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
 
-        /* EXPERTISES - CARDS ÉPURÉES */
-        .section { padding: 120px 8%; }
-        .section-title { font-size: 3.5rem; text-align: center; margin-bottom: 10px; }
-        .section-subtitle { text-align: center; color: var(--amber); font-weight: 600; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 80px; }
+        /* SECTIONS GENERAL */
+        .section { padding: 100px 8%; }
+        .section-title { font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 15px; }
+        .section-subtitle { text-align: center; color: var(--amber); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 60px; }
 
+        /* EXPERTISES */
         .expert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .expert-card { border: 1px solid #f1f5f9; transition: var(--transition); background: white; }
-        .expert-card:hover { border-color: var(--amber); transform: translateY(-10px); }
+        .expert-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); transition: var(--transition); }
+        .expert-card:hover { transform: scale(1.02); }
         .expert-img { height: 250px; background-size: cover; background-position: center; }
-        .expert-info { padding: 40px; }
-        .expert-info h3 { font-size: 1.8rem; margin-bottom: 20px; }
-        .expert-info ul { list-style: none; font-size: 0.9rem; opacity: 0.8; }
-        .expert-info ul li { margin-bottom: 10px; }
+        .expert-content { padding: 35px; }
+        .expert-content h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
+        .expert-content ul { list-style: none; font-size: 0.95rem; }
+        .expert-content li { margin-bottom: 12px; display: flex; align-items: center; }
+        .expert-content i { color: var(--amber); margin-right: 12px; }
 
-        /* TÉMOIGNAGES ALIGNÉS */
+        /* TÉMOIGNAGES */
         .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .testi-card { padding: 40px; background: #fff; border: 1px solid #f1f5f9; display: flex; flex-direction: column; }
-        .testi-text { font-style: italic; font-size: 1rem; margin-bottom: 30px; flex-grow: 1; }
-        .testi-meta { border-top: 1px solid #f1f5f9; padding-top: 20px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; color: var(--amber); }
+        .testi-card { background: white; padding: 40px; border-radius: 20px; border-left: 6px solid var(--amber); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; }
+        .testi-card:hover { transform: translateY(-5px); background: var(--bg-light); }
+        .testi-text { font-style: italic; margin-bottom: 25px; font-size: 1rem; color: #475569; }
+        .testi-author { font-weight: 800; font-size: 0.9rem; text-transform: uppercase; color: var(--primary); }
+        .testi-role { color: var(--accent); font-size: 0.8rem; font-weight: 600; }
 
-        /* FORMULAIRE MINIMALISTE */
-        .contact-container { max-width: 800px; margin: 0 auto; background: var(--light); padding: 60px; }
-        input, select, textarea { 
-            width: 100%; padding: 15px; border: none; border-bottom: 1px solid #cbd5e1; 
-            background: transparent; margin-bottom: 30px; font-family: 'Inter'; font-size: 0.9rem; transition: 0.3s;
+        /* SECTION RENDEZ-VOUS */
+        .contact-section { background: var(--bg-light); padding: 100px 8%; }
+        .contact-container { 
+            max-width: 1100px; margin: 0 auto; display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; gap: 40px; 
+            background: white; padding: 50px; border-radius: 25px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
         }
-        input:focus { outline: none; border-bottom-color: var(--amber); }
+        .hours-box { background: var(--accent); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.8rem; margin-bottom: 8px; color: var(--primary); }
+        input, select, textarea { width: 100%; padding: 15px; border: 1px solid #e2e8f0; border-radius: 10px; font-family: inherit; }
+        .submit-btn { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .submit-btn:hover { background: var(--accent); }
         
-        /* FOOTER */
-        footer { padding: 100px 8% 40px; background: var(--primary); color: white; text-align: center; }
-        .socials { margin-bottom: 40px; }
-        .socials a { color: white; margin: 0 15px; font-size: 1.2rem; transition: 0.3s; }
-        .socials a:hover { color: var(--amber); }
+        .wa-direct { background: #f0fdf4; padding: 40px; border-radius: 20px; text-align: center; border: 2px dashed #25d366; align-self: start; }
+        .wa-btn { display: inline-block; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; }
 
-        /* WHATSAPP FLOTTANT */
+        /* FOOTER PRESTIGE */
+        footer { background: var(--primary); color: white; padding: 80px 8% 40px; text-align: center; }
+        .footer-logo img { height: 75px; filter: brightness(0) invert(1); margin-bottom: 30px; }
+        .socials { margin-bottom: 30px; }
+        .socials a { color: white; font-size: 1.8rem; margin: 0 20px; transition: 0.3s; }
+        .socials a:hover { color: var(--amber); transform: scale(1.2); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; font-size: 0.8rem; opacity: 0.5; }
+
+        /* WHATSAPP FLOTTANT (NETTOYÉ) */
         .wa-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366; 
-            width: 60px; height: 60px; border-radius: 50%; display: flex;
+            width: 65px; height: 65px; border-radius: 50%; display: flex;
             align-items: center; justify-content: center; color: white;
-            font-size: 1.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 3000;
+            font-size: 2rem; z-index: 3000; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: pulse-wa 2s infinite;
+            text-decoration: none; /* Enlève toute barre/soulignement */
+        }
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         /* MOBILE NAVIGATION */
         @media (max-width: 1024px) {
+            header { height: 100px; }
+            .logo img { height: 75px; }
             .menu-btn { display: block; }
             .nav-links { 
-                position: fixed; top: 90px; right: -100%; width: 100%; height: calc(100vh - 90px);
-                background: white; flex-direction: column; padding: 60px 0; transition: var(--transition);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                position: fixed; top: 100px; right: -100%; width: 100%; height: calc(100vh - 100px);
+                background: white; flex-direction: column; padding: 50px 0; transition: 0.4s ease-in-out;
+                z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             }
             .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; }
+            .contact-container { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 2.5rem; }
+            .section-title { font-size: 2.2rem; }
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
@@ -160,119 +187,152 @@
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#expertises">Expertises</a></li>
             <li><a href="#temoignages">Témoignages</a></li>
-            <li><a href="#contact">Rendez-vous</a></li>
+            <li><a href="#contact">Prendre RDV</a></li>
         </ul>
     </header>
 
     <section class="hero" id="accueil">
         <div class="reveal active">
             <p>Conseil • Psychologie • Coaching</p>
-            <h1>L'Équilibre au Service de l'Excellence</h1>
-            <a href="#contact" class="btn-gold">Prendre rendez-vous</a>
+            <h1>Performez par l'Équilibre Humain</h1>
+            <a href="#contact" class="btn-cta">Demander un diagnostic</a>
         </div>
     </section>
 
-    <section class="stats-section">
+    <section class="stats-bar">
+        <h2 class="section-title">Notre Impact en Chiffres</h2>
+        <p class="section-subtitle" style="margin-bottom: 50px;">L'excellence au service de nos partenaires</p>
         <div class="stats-grid">
-            <div class="stat-item reveal">
+            <div class="stat-card reveal">
+                <i class="fas fa-building"></i>
                 <span class="stat-num">120+</span>
-                <span class="stat-txt">Entreprises</span>
+                <span class="stat-lab">Entreprises</span>
             </div>
-            <div class="stat-item reveal">
+            <div class="stat-card reveal">
+                <i class="fas fa-users"></i>
                 <span class="stat-num">850+</span>
-                <span class="stat-txt">Salariés Formés</span>
+                <span class="stat-lab">Salariés Formés</span>
             </div>
-            <div class="stat-item reveal">
+            <div class="stat-card reveal">
+                <i class="fas fa-heart"></i>
                 <span class="stat-num">45+</span>
-                <span class="stat-txt">Harmonies Couples</span>
+                <span class="stat-lab">Harmonies Couples</span>
             </div>
-            <div class="stat-item reveal">
+            <div class="stat-card reveal">
+                <i class="fas fa-award"></i>
                 <span class="stat-num">98%</span>
-                <span class="stat-txt">Satisfaction</span>
+                <span class="stat-lab">Satisfaction</span>
             </div>
         </div>
     </section>
 
     <section class="section reveal" id="expertises">
-        <h2 class="section-title">Nos Domaines</h2>
-        <p class="section-subtitle">Un accompagnement d'exception</p>
+        <h2 class="section-title">Nos Expertises</h2>
+        <p class="section-subtitle">Un accompagnement d'exception à Lomé</p>
         <div class="expert-grid">
-            <div class="expert-card">
+            <div class="expert-card reveal">
                 <div class="expert-img" style="background-image: url('financial-advisor-sharing-his-expertise-regarding-pension-retirement-plans.jpg');"></div>
-                <div class="expert-info">
+                <div class="expert-content">
                     <h3>Solutions RH</h3>
-                    <ul><li>• Audit Stratégique</li><li>• Recrutement de Cadres</li><li>• Digitalisation</li></ul>
+                    <ul><li><i class="fas fa-check-circle"></i> Audit Stratégique</li><li><i class="fas fa-check-circle"></i> Recrutement de Cadres</li><li><i class="fas fa-check-circle"></i> Digitalisation RH</li></ul>
                 </div>
             </div>
-            <div class="expert-card">
+            <div class="expert-card reveal">
                 <div class="expert-img" style="background-image: url('portrait-elegant-professional-businesswoman.jpg');"></div>
-                <div class="expert-info">
+                <div class="expert-content">
                     <h3>Leadership</h3>
-                    <ul><li>• Executive Coaching</li><li>• Team Building</li><li>• Gestion des conflits</li></ul>
+                    <ul><li><i class="fas fa-check-circle"></i> Executive Coaching</li><li><i class="fas fa-check-circle"></i> Team Building</li><li><i class="fas fa-check-circle"></i> Gestion des conflits</li></ul>
                 </div>
             </div>
-            <div class="expert-card">
+            <div class="expert-card reveal">
                 <div class="expert-img" style="background-image: url('front-view-black-family-posing-studio.jpg');"></div>
-                <div class="expert-info">
-                    <h3>Bien-être</h3>
-                    <ul><li>• Psychologie Clinique</li><li>• Harmonie de Couple</li><li>• Prévention Stress</li></ul>
+                <div class="expert-content">
+                    <h3>Psychologie</h3>
+                    <ul><li><i class="fas fa-check-circle"></i> Harmonie de Couple</li><li><i class="fas fa-check-circle"></i> Gestion du Stress</li><li><i class="fas fa-check-circle"></i> Psychologie Clinique</li></ul>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="section reveal" id="temoignages" style="background: #fafafa;">
-        <h2 class="section-title">Confiance</h2>
-        <p class="section-subtitle">Ils nous recommandent à Lomé</p>
+        <h2 class="section-title">Ils nous font confiance</h2>
+        <p class="section-subtitle">Ce que disent nos partenaires</p>
         <div class="testi-grid">
-            <div class="testi-card">
-                <p class="testi-text">"Une approche clinique qui fait la différence en entreprise."</p>
-                <div class="testi-meta">Directeur Général - BTP</div>
+            <div class="testi-card reveal">
+                <p class="testi-text">"Une restructuration qui a sauvé notre climat social. La productivité a suivi immédiatement."</p>
+                <p class="testi-author">Directeur Général</p>
+                <p class="testi-role">Secteur BTP - Togo</p>
             </div>
-            <div class="testi-card">
-                <p class="testi-text">"L'humanité au centre de chaque décision stratégique."</p>
-                <div class="testi-meta">Responsable RH - Banque</div>
+            <div class="testi-card reveal">
+                <p class="testi-text">"L'approche psychologique du cabinet est unique. Un soutien précieux pour nos cadres."</p>
+                <p class="testi-author">Responsable RH</p>
+                <p class="testi-role">Institution Financière</p>
             </div>
-            <div class="testi-card">
-                <p class="testi-text">"Un nouveau souffle pour notre couple et notre famille."</p>
-                <div class="testi-meta">Particulier</div>
+            <div class="testi-card reveal">
+                <p class="testi-text">"Un coaching qui m'a permis de retrouver une vision claire et de mieux déléguer."</p>
+                <p class="testi-author">Promoteur PME</p>
+                <p class="testi-role">Logistique</p>
             </div>
         </div>
     </section>
 
-    <section class="section reveal" id="contact">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Votre diagnostic en toute discrétion</p>
+    <section class="contact-section reveal" id="contact">
+        <h2 class="section-title">Rendez-vous</h2>
+        <p class="section-subtitle">Planifions votre prochaine étape</p>
         <div class="contact-container">
-            <div id="success-message" style="display:none; text-align:center; padding: 40px;">
-                <h3 style="color:var(--amber)">Demande reçue.</h3>
-                <p>Nous vous recontacterons sous peu.</p>
+            <div class="contact-form">
+                <div class="hours-box">
+                    <h4><i class="far fa-clock"></i> Horaires d'ouverture</h4>
+                    <p>Lundi au Vendredi : 08h00 – 18h00</p>
+                </div>
+                <div id="success-msg" style="display:none; color:green; padding:20px; font-weight:700;">✓ Demande envoyée avec succès !</div>
+                <form id="rdvForm" action="https://hook.eu1.make.com/tq72rmy6zoybulfyu8x26kmluc6gy5c5" method="POST">
+                    <div class="form-group">
+                        <label>NOM COMPLET</label>
+                        <input type="text" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>WHATSAPP</label>
+                        <input type="tel" name="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>DOMAINE</label>
+                        <select name="service" required>
+                            <option value="RH">Solutions RH</option>
+                            <option value="Coaching">Coaching</option>
+                            <option value="Psy">Psychologie</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Confirmer la demande</button>
+                </form>
             </div>
-            <form id="rdvForm" action="https://hook.eu1.make.com/tq72rmy6zoybulfyu8x26kmluc6gy5c5" method="POST">
-                <input type="text" name="nom_complet" placeholder="NOM COMPLET" required>
-                <input type="tel" name="telephone" placeholder="TÉLÉPHONE WHATSAPP" required>
-                <select name="service" required>
-                    <option value="">DOMAINE D'INTERVENTION...</option>
-                    <option value="RH">Solutions RH</option>
-                    <option value="Coaching">Leadership & Coaching</option>
-                    <option value="Psy">Psychologie & Couple</option>
-                </select>
-                <textarea name="message" rows="3" placeholder="VOTRE MESSAGE"></textarea>
-                <button type="submit" class="btn-gold" style="width:100%; border:none; cursor:pointer;">Envoyer la demande</button>
-            </form>
+            <div class="wa-direct">
+                <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25d366;"></i>
+                <h3>Urgence ?</h3>
+                <p>Besoin d'une réponse immédiate ? Contactez-nous en un clic.</p>
+                <a href="https://wa.me/22898912369" class="wa-btn">Discuter sur WhatsApp</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" style="height: 50px; filter: brightness(0) invert(1); margin-bottom: 30px;">
-        <div class="socials">
-            <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
+        <div class="footer-logo">
+            <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH">
         </div>
-        <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px;">© 2026 GESTORH | LOMÉ, TOGO</p>
+        <div class="socials">
+            <a href="https://www.linkedin.com/company/cabinet-gestorh/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/share/1N1L3mFM6w/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p>Lomé, Togo</p>
+        <p>+228 98 91 23 69 | +228 90 28 85 40</p>
+        <div class="footer-bottom">
+            © 2026 GESTORH | Excellence RH & Psychologie | Tous droits réservés.
+        </div>
     </footer>
 
-    <a href="https://wa.me/22898912369" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/22898912369" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         // MENU MOBILE AVEC FERMETURE AUTO
@@ -280,20 +340,19 @@
         const navLinks = document.getElementById('navLinks');
         const menuIcon = menuBtn.querySelector('i');
 
-        const toggleMenu = () => {
+        menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuIcon.classList.toggle('fa-bars');
-            menuIcon.classList.toggle('fa-xmark');
-        };
+            if(navLinks.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
 
-        menuBtn.addEventListener('click', toggleMenu);
-
-        // Fermeture au clic sur un lien
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                menuIcon.classList.add('fa-bars');
-                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
             });
         });
 
@@ -301,14 +360,19 @@
         const form = document.getElementById("rdvForm");
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            const btn = document.getElementById("submitBtn");
+            btn.innerText = "Envoi...";
             try {
                 await fetch(form.action, { method: 'POST', body: new FormData(form) });
                 form.style.display = "none";
-                document.getElementById("success-message").style.display = "block";
-            } catch (err) { alert("Erreur. Utilisez WhatsApp."); }
+                document.getElementById("success-msg").style.display = "block";
+            } catch (err) {
+                alert("Erreur. Tentez via WhatsApp.");
+                btn.innerText = "Réessayer";
+            }
         });
 
-        // REVEAL
+        // REVEAL ANIMATIONS
         const reveal = () => {
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
