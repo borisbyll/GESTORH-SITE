@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre de Diagnostics | GESTORH</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JV77S0NRS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6JV77S0NRS');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1e293b; 
+            --accent: #2c4a9a;
+            --amber: #f2a93b;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Outfit', sans-serif; color: var(--primary); line-height: 1.6; background: var(--white); overflow-x: hidden; }
+
+        /* HEADER IDENTIQUE */
+        header {
+            position: fixed; top: 0; width: 100%; height: 110px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; background: rgba(255, 255, 255, 0.98);
+            z-index: 9999; box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+        }
+        .logo img { height: 90px; width: auto; cursor: pointer; }
+        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links li { margin-left: 35px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .menu-btn { display: none; font-size: 2rem; cursor: pointer; color: var(--primary); }
+
+        /* STYLE PAGE TESTS */
+        .container { max-width: 1200px; margin: 180px auto 80px; padding: 0 20px; }
+        .intro-text { text-align: center; margin-bottom: 60px; }
+        .intro-text h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
+        .intro-text span { color: var(--amber); }
+
+        .category-block { margin-bottom: 80px; }
+        .category-header { display: flex; align-items: center; margin-bottom: 35px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0; }
+        .category-header i { color: var(--amber); margin-right: 15px; font-size: 1.8rem; }
+        .category-header h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .test-card { background: white; padding: 35px; border-radius: 15px; border: 1px solid #eef2f6; transition: var(--transition); cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .test-card:hover { transform: translateY(-8px); border-color: var(--amber); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+        .test-card h4 { color: var(--accent); font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
+        .badge-test { font-size: 0.7rem; font-weight: 800; background: #f1f5f9; padding: 4px 12px; border-radius: 20px; color: var(--primary); text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+
+        #test-interface { display: none; background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); max-width: 850px; margin: 0 auto; border-top: 6px solid var(--amber); }
+        .progress-bar { height: 8px; background: #f1f5f9; border-radius: 10px; margin: 30px 0; overflow: hidden; }
+        .progress-inner { height: 100%; background: var(--amber); width: 0%; transition: 0.4s; }
+        .option-btn { display: block; width: 100%; padding: 20px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; font-family: inherit; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .option-btn:hover { background: var(--bg-light); border-color: var(--accent); transform: translateX(5px); }
+
+        #result-area { text-align: center; display: none; }
+        .advice-box { background: #f8fafc; padding: 40px; border-radius: 15px; margin: 30px 0; border-left: 6px solid var(--amber); text-align: left; }
+        .btn-cta { background: var(--amber); color: white; padding: 20px 45px; text-decoration: none; font-weight: 800; border-radius: 5px; transition: var(--transition); display: inline-block; text-transform: uppercase; border:none; cursor:pointer;}
+
+        /* FOOTER IDENTIQUE */
+        footer { background: var(--primary); color: white; padding: 80px 8% 40px; text-align: center; }
+        .footer-logo img { height: 75px; filter: brightness(0) invert(1); margin-bottom: 30px; }
+        .socials { margin-bottom: 25px; }
+        .socials a { color: white; font-size: 1.8rem; margin: 0 20px; transition: 0.3s; display: inline-block; text-decoration: none; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; font-size: 0.8rem; opacity: 0.6; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-decoration: none; }
+
+        @media (max-width: 1024px) {
+            .menu-btn { display: block; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: white; flex-direction: column; justify-content: center; transition: 0.5s; z-index: 9998; box-shadow: -10px 0 30px rgba(0,0,0,0.1); }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 20px 0; margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="window.location.href='index.html'"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
+        <div id="menuBtn" class="menu-btn"><i class="fas fa-bars"></i></div>
+        <ul id="navLinks" class="nav-links">
+            <li><a href="index.html#accueil">Accueil</a></li>
+            <li><a href="#" style="color: var(--amber);">Tests & Bilans</a></li>
+            <li><a href="index.html#expertises">Expertises</a></li>
+            <li><a href="index.html#temoignages">Témoignages</a></li>
+            <li><a href="index.html#contact">Prendre RDV</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <div id="selector-view">
+            <div class="intro-text">
+                <h1>Centre de <span>Diagnostics</span> GESTORH</h1>
+                <p>Évaluations gratuites en ligne pour particuliers et entreprises.</p>
+            </div>
+
+            <div class="category-block">
+                <div class="category-header"><i class="fas fa-chart-line"></i><h2>Performance & Entreprise</h2></div>
+                <div class="test-grid">
+                    <div class="test-card" onclick="initTest('ent_performance')">
+                        <div class="badge-test">Audit</div><h4>Performance d'Activité</h4><p>Santé globale, rentabilité et vision stratégique.</p>
+                    </div>
+                    <div class="test-card" onclick="initTest('ent_equipe')">
+                        <div class="badge-test">Lencioni</div><h4>Dysfonctionnements d'Équipe</h4><p>Cohésion, confiance et engagement collectif.</p>
+                    </div>
+                    <div class="test-card" onclick="initTest('ent_climat')">
+                        <div class="badge-test">RH Audit</div><h4>Climat Social</h4><p>Satisfaction interne et prévention du turn-over.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-block">
+                <div class="category-header"><i class="fas fa-user-tie"></i><h2>Carrière & Leadership</h2></div>
+                <div class="test-grid">
+                    <div class="test-card" onclick="initTest('pro_leader')">
+                        <div class="badge-test">Profilage</div><h4>Type de Manager</h4><p>Style de direction : Visionnaire ou Opérationnel.</p>
+                    </div>
+                    <div class="test-card" onclick="initTest('pro_job')">
+                        <div class="badge-test">Ikigai</div><h4>Compatibilité Métier</h4><p>Votre job est-il aligné avec votre nature profonde ?</p>
+                    </div>
+                    <div class="test-card" onclick="initTest('pro_sabot')">
+                        <div class="badge-test">Inconscient</div><h4>Mon Saboteur Pro</h4><p>Quel trait de caractère freine votre ascension ?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-block">
+                <div class="category-header"><i class="fas fa-heart"></i><h2>Équilibre & Relations</h2></div>
+                <div class="test-grid">
+                    <div class="test-card" onclick="initTest('psy_burnout')">
+                        <div class="badge-test">Santé Mentale</div><h4>Épuisement Invisible</h4><p>Détectez les signaux de Burn-out précocement.</p>
+                    </div>
+                    <div class="test-card" onclick="initTest('couple_comp')">
+                        <div class="badge-test">Harmonie</div><h4>Compatibilité de Couple</h4><p>Alignement des valeurs et vision commune.</p>
+                    </div>
+                    <div class="test-card" onclick="initTest('psy_confiance')">
+                        <div class="badge-test">Psychologie</div><h4>Confiance en Soi</h4><p>Estime personnelle et audace en milieu social.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-interface">
+            <div onclick="showSelector()" style="cursor:pointer; color:var(--accent); font-weight:700; margin-bottom:20px;">
+                <i class="fas fa-arrow-left"></i> Retour au centre
+            </div>
+            <h2 id="test-title"></h2>
+            <div class="progress-bar"><div class="progress-inner" id="progress"></div></div>
+            <div id="question-box">
+                <h3 id="question-text" style="margin-bottom: 30px;"></h3>
+                <div id="options-list"></div>
+            </div>
+            <div id="result-area">
+                <h2 id="res-name" style="font-size: 2.5rem; margin: 15px 0; color: var(--amber);"></h2>
+                <div class="advice-box">
+                    <h4 style="margin-bottom: 10px;">Analyse de l'Expert :</h4>
+                    <p id="res-advice"></p>
+                </div>
+                <a href="index.html#contact" class="btn-cta">Prendre RDV pour un débriefing</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
+        <div class="socials">
+            <a href="https://www.linkedin.com/company/cabinet-gestorh/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/share/1N1L3mFM6w/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p>Lomé, Togo | +228 98 91 23 69 / +228 90 03 61 87</p>
+        <div class="footer-bottom">© 2026 GESTORH | Excellence Humaine.</div>
+    </footer>
+
+    <a href="https://wa.me/22898912369" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        // JS HEADER
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.onclick = () => navLinks.classList.toggle('active');
+
+        // LOGIQUE TESTS
+        const database = {
+            ent_performance: { title: "Performance d'Activité", questions: [
+                {q: "Vos objectifs sont-ils écrits et suivis ?", a: ["Oui", "En partie", "Non"], p: [3, 1, 0]},
+                {q: "L'activité peut-elle tourner sans vous ?", a: ["Oui", "Difficilement", "Pas du tout"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:2, name:"Structure Fragile", advice:"Votre entreprise dépend trop de l'improvisation."},
+                {min:3, max:6, name:"Potentiel Fort", advice:"Solide, mais nécessite une optimisation des process."}
+            ]},
+            ent_equipe: { title: "Dysfonctionnements d'Équipe", questions: [
+                {q: "On se dit les vérités en face ?", a: ["Toujours", "Parfois", "Jamais"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:1, name:"Manque de Confiance", advice:"La base de la pyramide de Lencioni est atteinte."},
+                {min:2, max:3, name:"Équipe Saine", advice:"Continuez à cultiver la transparence."}
+            ]},
+            ent_climat: { title: "Climat Social", questions: [
+                {q: "Sentiez-vous de la motivation ?", a: ["Forte", "Moyenne", "Basse"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:1, name:"Alerte RH", advice:"Risque de démission ou de baisse de productivité."},
+                {min:2, max:3, name:"Climat Positif", advice:"Maintenez le dialogue social."}
+            ]},
+            pro_leader: { title: "Type de Manager", questions: [
+                {q: "Priorité ?", a: ["Vision", "Opérations", "Bien-être"], p: [3, 1, 2]}
+            ], results: [
+                {min:1, max:1, name:"Manager Opérationnel", advice:"Vous êtes un pilier technique."},
+                {min:2, max:2, name:"Manager Bienveillant", advice:"L'humain est votre moteur."},
+                {min:3, max:3, name:"Leader Visionnaire", advice:"Vous inspirez par le futur."}
+            ]},
+            pro_job: { title: "Ikigai Professionnel", questions: [
+                {q: "Aimez-vous vos tâches ?", a: ["Passionnément", "C'est alimentaire", "Non"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:1, name:"En quête de sens", advice:"Un repositionnement pro serait bénéfique."},
+                {min:2, max:3, name:"Épanoui", advice:"Vous êtes aligné avec vos valeurs."}
+            ]},
+            pro_sabot: { title: "Mon Saboteur Pro", questions: [
+                {q: "Réaction devant l'échec ?", a: ["Apprendre", "Se blâmer", "Abandon"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:1, name:"Saboteur d'Évitement", advice:"La peur de l'échec freine votre succès."},
+                {min:2, max:3, name:"Esprit Croissance", advice:"Vous transformez les obstacles."}
+            ]},
+            psy_burnout: { title: "Épuisement Invisible", questions: [
+                {q: "Fatigue au réveil ?", a: ["Souvent", "Parfois", "Jamais"], p: [0, 1, 3]}
+            ], results: [
+                {min:0, max:1, name:"Risque Burn-out", advice:"Consultez un spécialiste pour recharger les batteries."},
+                {min:2, max:3, name:"Équilibre Correct", advice:"Gardez vos rituels de déconnexion."}
+            ]},
+            couple_comp: { title: "Compatibilité Couple", questions: [
+                {q: "Vision à 5 ans commune ?", a: ["Oui", "Floue", "Non"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:1, name:"Visions divergentes", advice:"Besoin de recalibrer vos projets de vie."},
+                {min:2, max:3, name:"Duo Fusionnel", advice:"Votre alignement est votre force."}
+            ]},
+            psy_confiance: { title: "Confiance en Soi", questions: [
+                {q: "Peur du jugement ?", a: ["Non", "Un peu", "Beaucoup"], p: [3, 1, 0]}
+            ], results: [
+                {min:0, max:1, name:"Estime à nourrir", advice:"Le coaching peut booster votre assurance."},
+                {min:2, max:3, name:"Solide assurance", advice:"Vous avancez avec détermination."}
+            ]}
+        };
+
+        let activeTest = null, currentIdx = 0, score = 0;
+
+        function initTest(cat) {
+            activeTest = database[cat]; currentIdx = 0; score = 0;
+            document.getElementById('selector-view').style.display = 'none';
+            document.getElementById('test-interface').style.display = 'block';
+            document.getElementById('result-area').style.display = 'none';
+            document.getElementById('question-box').style.display = 'block';
+            document.getElementById('test-title').innerText = activeTest.title;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const qData = activeTest.questions[currentIdx];
+            document.getElementById('progress').style.width = (currentIdx / activeTest.questions.length) * 100 + "%";
+            document.getElementById('question-text').innerText = qData.q;
+            const list = document.getElementById('options-list'); list.innerHTML = "";
+            qData.a.forEach((label, i) => {
+                const btn = document.createElement('button'); btn.className = "option-btn"; btn.innerText = label;
+                btn.onclick = () => { 
+                    score += qData.p[i]; currentIdx++; 
+                    currentIdx < activeTest.questions.length ? renderQuestion() : showResult(); 
+                };
+                list.appendChild(btn);
+            });
+        }
+
+        function showResult() {
+            document.getElementById('question-box').style.display = 'none';
+            document.getElementById('progress').style.width = "100%";
+            document.getElementById('result-area').style.display = 'block';
+            const res = activeTest.results.find(r => score >= r.min && score <= r.max);
+            document.getElementById('res-name').innerText = res.name;
+            document.getElementById('res-advice').innerText = res.advice;
+        }
+
+        function showSelector() {
+            document.getElementById('test-interface').style.display = 'none';
+            document.getElementById('selector-view').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
