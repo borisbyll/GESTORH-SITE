@@ -32,7 +32,6 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Outfit', sans-serif; color: var(--primary); line-height: 1.6; background: var(--white); overflow-x: hidden; }
 
-        /* HEADER IDENTIQUE */
         header {
             position: fixed; top: 0; width: 100%; height: 110px;
             display: flex; justify-content: space-between; align-items: center;
@@ -46,7 +45,6 @@
         .nav-links a:hover { color: var(--accent); }
         .menu-btn { display: none; font-size: 2rem; cursor: pointer; color: var(--primary); }
 
-        /* STYLE PAGE TESTS */
         .container { max-width: 1200px; margin: 180px auto 80px; padding: 0 20px; }
         .intro-text { text-align: center; margin-bottom: 60px; }
         .intro-text h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
@@ -71,9 +69,26 @@
 
         #result-area { text-align: center; display: none; }
         .advice-box { background: #f8fafc; padding: 40px; border-radius: 15px; margin: 30px 0; border-left: 6px solid var(--amber); text-align: left; }
-        .btn-cta { background: var(--amber); color: white; padding: 20px 45px; text-decoration: none; font-weight: 800; border-radius: 5px; transition: var(--transition); display: inline-block; text-transform: uppercase; border:none; cursor:pointer;}
+        
+        .btn-cta { 
+            background: var(--amber); 
+            color: white; 
+            padding: 22px 40px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            border-radius: 5px; 
+            transition: var(--transition); 
+            display: inline-flex; 
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase; 
+            border: none; 
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(242, 169, 59, 0.2);
+            font-size: 1rem;
+        }
+        .btn-cta:hover { transform: scale(1.05); background: #e0962d; box-shadow: 0 15px 30px rgba(242, 169, 59, 0.3); }
 
-        /* FOOTER IDENTIQUE */
         footer { background: var(--primary); color: white; padding: 80px 8% 40px; text-align: center; }
         .footer-logo img { height: 75px; filter: brightness(0) invert(1); margin-bottom: 30px; }
         .socials { margin-bottom: 25px; }
@@ -172,7 +187,10 @@
                     <h4 style="margin-bottom: 10px;">Analyse de l'Expert :</h4>
                     <p id="res-advice"></p>
                 </div>
-                <a href="index.html#contact" class="btn-cta">Prendre RDV pour un débriefing</a>
+                <a href="index.html#contact" id="cta-link" class="btn-cta">
+                    <span id="cta-text"></span>
+                    <i class="fas fa-calendar-check"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -190,68 +208,66 @@
     <a href="https://wa.me/22898912369" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script>
-        // JS HEADER
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
         menuBtn.onclick = () => navLinks.classList.toggle('active');
 
-        // LOGIQUE TESTS
         const database = {
             ent_performance: { title: "Performance d'Activité", questions: [
                 {q: "Vos objectifs sont-ils écrits et suivis ?", a: ["Oui", "En partie", "Non"], p: [3, 1, 0]},
                 {q: "L'activité peut-elle tourner sans vous ?", a: ["Oui", "Difficilement", "Pas du tout"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:2, name:"Structure Fragile", advice:"Votre entreprise dépend trop de l'improvisation."},
-                {min:3, max:6, name:"Potentiel Fort", advice:"Solide, mais nécessite une optimisation des process."}
+                {min:0, max:2, name:"Structure à consolider", advice:"Votre entreprise possède des bases, mais dépend encore trop de l'improvisation, ce qui limite votre croissance. Un échange avec nos experts permettrait de sécuriser vos revenus et de structurer votre avenir.", cta:"Fixer un rendez-vous conseil"},
+                {min:3, max:6, name:"Excellent Potentiel", advice:"Félicitations ! Votre structure est saine. Pour franchir un nouveau palier et dominer votre secteur, un accompagnement stratégique avec GESTORH fera la différence.", cta:"Passer au niveau supérieur"}
             ]},
             ent_equipe: { title: "Dysfonctionnements d'Équipe", questions: [
                 {q: "On se dit les vérités en face ?", a: ["Toujours", "Parfois", "Jamais"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:1, name:"Manque de Confiance", advice:"La base de la pyramide de Lencioni est atteinte."},
-                {min:2, max:3, name:"Équipe Saine", advice:"Continuez à cultiver la transparence."}
+                {min:0, max:1, name:"Besoin de cohésion", advice:"La confiance semble altérée. Sans action immédiate, la productivité va stagner. Prenons rendez-vous pour restaurer une dynamique de groupe performante.", cta:"Réserver mon audit d'équipe"},
+                {min:2, max:3, name:"Équipe Saine & Transparente", advice:"Bravo ! C'est une force rare. Pour pérenniser cet atout et prévenir d'éventuels futurs blocages, un suivi périodique avec nos coachs est idéal.", cta:"Maintenir l'excellence d'équipe"}
             ]},
             ent_climat: { title: "Climat Social", questions: [
                 {q: "Sentiez-vous de la motivation ?", a: ["Forte", "Moyenne", "Basse"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:1, name:"Alerte RH", advice:"Risque de démission ou de baisse de productivité."},
-                {min:2, max:3, name:"Climat Positif", advice:"Maintenez le dialogue social."}
+                {min:0, max:1, name:"Alerte Climat Social", advice:"Le moral de vos équipes est en zone de risque. Afin d'éviter des départs massifs, rencontrons-nous pour définir un plan d'action RH urgent.", cta:"Prendre rendez-vous d'urgence"},
+                {min:2, max:3, name:"Atmosphère Inspirante", advice:"Félicitations ! Vos collaborateurs sont engagés. Pour transformer cet engagement en performance durable, découvrez nos méthodes d'optimisation.", cta:"Optimiser mon capital humain"}
             ]},
             pro_leader: { title: "Type de Manager", questions: [
                 {q: "Priorité ?", a: ["Vision", "Opérations", "Bien-être"], p: [3, 1, 2]}
             ], results: [
-                {min:1, max:1, name:"Manager Opérationnel", advice:"Vous êtes un pilier technique."},
-                {min:2, max:2, name:"Manager Bienveillant", advice:"L'humain est votre moteur."},
-                {min:3, max:3, name:"Leader Visionnaire", advice:"Vous inspirez par le futur."}
+                {min:1, max:1, name:"Profil Opérationnel", advice:"Vous maîtrisez le terrain. Pour acquérir la posture de leader inspirant et déléguer efficacement, le coaching GESTORH est votre solution.", cta:"Devenir un leader stratège"},
+                {min:2, max:2, name:"Manager Bienveillant", advice:"L'humain est au cœur de vos actions. Pour allier ce talent à une exigence de résultats sans vous épuiser, échangeons sur votre posture.", cta:"Réserver mon coaching leader"},
+                {min:3, max:3, name:"Leader Visionnaire", advice:"Félicitations, vous portez l'avenir. Pour traduire cette vision en actions concrètes et mobiliser vos équipes, GESTORH vous accompagne.", cta:"Prendre rendez-vous expert"}
             ]},
             pro_job: { title: "Ikigai Professionnel", questions: [
                 {q: "Aimez-vous vos tâches ?", a: ["Passionnément", "C'est alimentaire", "Non"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:1, name:"En quête de sens", advice:"Un repositionnement pro serait bénéfique."},
-                {min:2, max:3, name:"Épanoui", advice:"Vous êtes aligné avec vos valeurs."}
+                {min:0, max:1, name:"En quête d'alignement", advice:"Votre situation actuelle ne vous épanouit plus. Il est temps de redonner du sens à votre carrière avec un bilan de compétences sur mesure.", cta:"Demander mon bilan de carrière"},
+                {min:2, max:3, name:"Professionnel Épanoui", advice:"Bravo ! Vous avez trouvé votre voie. Pour maximiser votre impact et atteindre vos objectifs les plus ambitieux, discutons de vos prochains défis.", cta:"Propulser mes ambitions"}
             ]},
             pro_sabot: { title: "Mon Saboteur Pro", questions: [
                 {q: "Réaction devant l'échec ?", a: ["Apprendre", "Se blâmer", "Abandon"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:1, name:"Saboteur d'Évitement", advice:"La peur de l'échec freine votre succès."},
-                {min:2, max:3, name:"Esprit Croissance", advice:"Vous transformez les obstacles."}
+                {min:0, max:1, name:"Blocage Identifié", advice:"Certains schémas vous empêchent d'avancer. Levons ensemble ces barrières psychologiques pour libérer enfin votre réussite.", cta:"Débloquer mon potentiel"},
+                {min:2, max:3, name:"Mentalité de Gagnant", advice:"Félicitations ! Votre résilience est forte. Pour en faire un avantage compétitif irrésistible, contactez nos coachs.", cta:"Renforcer mon leadership"}
             ]},
             psy_burnout: { title: "Épuisement Invisible", questions: [
                 {q: "Fatigue au réveil ?", a: ["Souvent", "Parfois", "Jamais"], p: [0, 1, 3]}
             ], results: [
-                {min:0, max:1, name:"Risque Burn-out", advice:"Consultez un spécialiste pour recharger les batteries."},
-                {min:2, max:3, name:"Équilibre Correct", advice:"Gardez vos rituels de déconnexion."}
+                {min:0, max:1, name:"Signaux d'Alerte", advice:"Votre santé est la priorité. Avant d'atteindre le point de rupture, rencontrons-nous pour définir des mesures de protection et de récupération.", cta:"Prendre rendez-vous santé"},
+                {min:2, max:3, name:"Équilibre Préservé", advice:"Bravo, vous gérez bien votre énergie. Pour apprendre à maintenir cet équilibre même en période de haute pression, découvrez nos outils.", cta:"Gérer mon stress durablement"}
             ]},
             couple_comp: { title: "Compatibilité Couple", questions: [
                 {q: "Vision à 5 ans commune ?", a: ["Oui", "Floue", "Non"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:1, name:"Visions divergentes", advice:"Besoin de recalibrer vos projets de vie."},
-                {min:2, max:3, name:"Duo Fusionnel", advice:"Votre alignement est votre force."}
+                {min:0, max:1, name:"Défis de communication", advice:"Vos projets ne semblent plus alignés. Une médiation avec nos psychologues experts peut vous aider à reconstruire une vision commune.", cta:"Harmoniser mon couple"},
+                {min:2, max:3, name:"Duo Fusionnel", advice:"Félicitations ! Votre complicité est une force. Pour aborder vos futures étapes de vie avec sérénité, échangeons sur vos projets.", cta:"Construire notre avenir"}
             ]},
             psy_confiance: { title: "Confiance en Soi", questions: [
                 {q: "Peur du jugement ?", a: ["Non", "Un peu", "Beaucoup"], p: [3, 1, 0]}
             ], results: [
-                {min:0, max:1, name:"Estime à nourrir", advice:"Le coaching peut booster votre assurance."},
-                {min:2, max:3, name:"Solide assurance", advice:"Vous avancez avec détermination."}
+                {min:0, max:1, name:"Potentiel à révéler", advice:"Vos doutes freinent vos opportunités. Le coaching d'affirmation de soi GESTORH vous permettra de prendre enfin votre place.", cta:"Prendre confiance en moi"},
+                {min:2, max:3, name:"Assurance Affirmée", advice:"Bravo ! Vous avancez avec aplomb. Pour transformer cette assurance en charisme d'influence, contactez-nous pour un coaching.", cta:"Développer mon charisme"}
             ]}
         };
 
@@ -289,6 +305,7 @@
             const res = activeTest.results.find(r => score >= r.min && score <= r.max);
             document.getElementById('res-name').innerText = res.name;
             document.getElementById('res-advice').innerText = res.advice;
+            document.getElementById('cta-text').innerText = res.cta;
         }
 
         function showSelector() {
