@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centre de Diagnostics | GESTORH</title>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JV77S0NRS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6JV77S0NRS');
-    </script>
-
+    <title>Centre de Diagnostics Experts | GESTORH</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
-            --primary: #1e293b; 
-            --accent: #2c4a9a;
-            --amber: #f2a93b;
-            --white: #ffffff;
-            --bg-light: #f8fafc;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --primary: #1e293b; --accent: #2c4a9a; --amber: #f2a93b;
+            --critique: #ef4444; --moyen: #f59e0b; --optimal: #22c55e;
+            --white: #ffffff; --bg-light: #f8fafc; --transition: all 0.4s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Outfit', sans-serif; color: var(--primary); line-height: 1.6; background: var(--white); overflow-x: hidden; }
+        body { font-family: 'Outfit', sans-serif; color: var(--primary); background: var(--bg-light); line-height: 1.6; }
 
+        /* HEADER INDEX */
         header {
             position: fixed; top: 0; width: 100%; height: 110px;
             display: flex; justify-content: space-between; align-items: center;
@@ -45,73 +33,72 @@
         .nav-links a:hover { color: var(--accent); }
         .menu-btn { display: none; font-size: 2rem; cursor: pointer; color: var(--primary); }
 
-        .container { max-width: 1200px; margin: 180px auto 80px; padding: 0 20px; }
-        .intro-text { text-align: center; margin-bottom: 60px; }
-        .intro-text h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
-        .intro-text span { color: var(--amber); }
+        /* CONTENU */
+        .container { max-width: 1100px; margin: 160px auto 60px; padding: 0 20px; }
+        .intro-header { text-align: center; margin-bottom: 50px; }
+        .intro-header h1 { font-size: 2.8rem; font-weight: 800; }
+        .intro-header span { color: var(--amber); }
 
-        .category-block { margin-bottom: 80px; }
-        .category-header { display: flex; align-items: center; margin-bottom: 35px; padding-bottom: 15px; border-bottom: 2px solid #e2e8f0; }
-        .category-header i { color: var(--amber); margin-right: 15px; font-size: 1.8rem; }
-        .category-header h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+        .category-title { display: flex; align-items: center; margin: 40px 0 20px; font-weight: 800; text-transform: uppercase; color: var(--accent); border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        .category-title i { margin-right: 12px; font-size: 1.4rem; }
 
-        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .test-card { background: white; padding: 35px; border-radius: 15px; border: 1px solid #eef2f6; transition: var(--transition); cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-        .test-card:hover { transform: translateY(-8px); border-color: var(--amber); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
-        .test-card h4 { color: var(--accent); font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
-        .badge-test { font-size: 0.7rem; font-weight: 800; background: #f1f5f9; padding: 4px 12px; border-radius: 20px; color: var(--primary); text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .test-card { background: white; padding: 35px; border-radius: 15px; border: 1px solid #e2e8f0; transition: var(--transition); cursor: pointer; position: relative; overflow: hidden; }
+        .test-card:hover { transform: translateY(-8px); border-color: var(--amber); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .test-card h4 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
+        .test-card p { font-size: 0.95rem; opacity: 0.8; }
 
-        #test-interface { display: none; background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); max-width: 850px; margin: 0 auto; border-top: 6px solid var(--amber); }
-        .progress-bar { height: 8px; background: #f1f5f9; border-radius: 10px; margin: 30px 0; overflow: hidden; }
+        #test-interface { display: none; background: white; padding: 50px; border-radius: 20px; box-shadow: 0 25px 70px rgba(0,0,0,0.1); border-top: 10px solid var(--amber); }
+        .progress-bar { height: 8px; background: #edf2f7; border-radius: 10px; margin: 30px 0; overflow: hidden; }
         .progress-inner { height: 100%; background: var(--amber); width: 0%; transition: 0.4s; }
-        .option-btn { display: block; width: 100%; padding: 20px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; font-family: inherit; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .option-btn:hover { background: var(--bg-light); border-color: var(--accent); transform: translateX(5px); }
 
-        #result-area { text-align: center; display: none; }
-        .advice-box { background: #f8fafc; padding: 40px; border-radius: 15px; margin: 30px 0; border-left: 6px solid var(--amber); text-align: left; }
-        
+        .option-btn { display: block; width: 100%; padding: 22px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; font-weight: 600; font-size: 1.05rem; cursor: pointer; transition: 0.3s; text-align: left; }
+        .option-btn:hover { background: var(--bg-light); border-color: var(--accent); padding-left: 35px; }
+
+        #result-area { display: none; text-align: center; animation: slideUp 0.6s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .chart-container { width: 280px; margin: 0 auto 30px; position: relative; }
+        .advice-box { padding: 40px; border-radius: 15px; margin: 35px 0; border-left: 10px solid; text-align: left; }
+        .advice-box.status-red { border-left-color: var(--critique); background: #fef2f2; }
+        .advice-box.status-orange { border-left-color: var(--moyen); background: #fffbeb; }
+        .advice-box.status-green { border-left-color: var(--optimal); background: #f0fdf4; }
+
         .btn-cta { 
-            background: var(--amber); 
-            color: white; 
-            padding: 22px 40px; 
-            text-decoration: none; 
-            font-weight: 800; 
-            border-radius: 5px; 
-            transition: var(--transition); 
-            display: inline-flex; 
-            align-items: center;
-            gap: 15px;
-            text-transform: uppercase; 
-            border: none; 
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(242, 169, 59, 0.2);
-            font-size: 1rem;
+            padding: 24px 50px; text-decoration: none; font-weight: 800; border-radius: 10px; 
+            display: inline-flex; align-items: center; gap: 15px; text-transform: uppercase; 
+            transition: var(--transition); color: white; border: none; cursor: pointer; font-size: 1.2rem;
+            margin-top: 20px;
         }
-        .btn-cta:hover { transform: scale(1.05); background: #e0962d; box-shadow: 0 15px 30px rgba(242, 169, 59, 0.3); }
+        .bg-red { background: var(--critique); box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4); }
+        .bg-orange { background: var(--moyen); box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4); }
+        .bg-green { background: var(--optimal); box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4); }
+        .btn-cta:hover { transform: translateY(-3px) scale(1.02); filter: brightness(1.1); }
 
-        footer { background: var(--primary); color: white; padding: 80px 8% 40px; text-align: center; }
-        .footer-logo img { height: 75px; filter: brightness(0) invert(1); margin-bottom: 30px; }
+        /* FOOTER INDEX */
+        footer { background: var(--primary); color: white; padding: 80px 8% 40px; text-align: center; margin-top: 100px; }
+        .footer-logo img { height: 80px; filter: brightness(0) invert(1); margin-bottom: 30px; }
         .socials { margin-bottom: 25px; }
         .socials a { color: white; font-size: 1.8rem; margin: 0 20px; transition: 0.3s; display: inline-block; text-decoration: none; }
+        .socials a:hover { color: var(--amber); transform: translateY(-5px); }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 30px; font-size: 0.8rem; opacity: 0.6; }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-decoration: none; }
 
         @media (max-width: 1024px) {
             .menu-btn { display: block; }
-            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: white; flex-direction: column; justify-content: center; transition: 0.5s; z-index: 9998; box-shadow: -10px 0 30px rgba(0,0,0,0.1); }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: white; flex-direction: column; justify-content: center; transition: 0.5s; z-index: 9998; }
             .nav-links.active { right: 0; }
-            .nav-links li { margin: 20px 0; margin-left: 0; }
+            .nav-links li { margin: 20px 0; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" onclick="window.location.href='index.html'"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
+        <div class="logo" onclick="showSelector()"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
         <div id="menuBtn" class="menu-btn"><i class="fas fa-bars"></i></div>
         <ul id="navLinks" class="nav-links">
-            <li><a href="index.html#accueil">Accueil</a></li>
-            <li><a href="#" style="color: var(--amber);">Tests & Bilans</a></li>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="tests-interactifs.html" style="color: var(--amber);">Tests & Bilans</a></li>
             <li><a href="index.html#expertises">Expertises</a></li>
             <li><a href="index.html#temoignages">Témoignages</a></li>
             <li><a href="index.html#contact">Prendre RDV</a></li>
@@ -120,158 +107,193 @@
 
     <div class="container">
         <div id="selector-view">
-            <div class="intro-text">
-                <h1>Centre de <span>Diagnostics</span> GESTORH</h1>
-                <p>Évaluations gratuites en ligne pour particuliers et entreprises.</p>
+            <div class="intro-header">
+                <h1>Centre de <span>Diagnostics Experts</span></h1>
+                <p>Évaluations méthodologiques approfondies pour dirigeants et particuliers.</p>
             </div>
 
-            <div class="category-block">
-                <div class="category-header"><i class="fas fa-chart-line"></i><h2>Performance & Entreprise</h2></div>
-                <div class="test-grid">
-                    <div class="test-card" onclick="initTest('ent_performance')">
-                        <div class="badge-test">Audit</div><h4>Performance d'Activité</h4><p>Santé globale, rentabilité et vision stratégique.</p>
-                    </div>
-                    <div class="test-card" onclick="initTest('ent_equipe')">
-                        <div class="badge-test">Lencioni</div><h4>Dysfonctionnements d'Équipe</h4><p>Cohésion, confiance et engagement collectif.</p>
-                    </div>
-                    <div class="test-card" onclick="initTest('ent_climat')">
-                        <div class="badge-test">RH Audit</div><h4>Climat Social</h4><p>Satisfaction interne et prévention du turn-over.</p>
-                    </div>
+            <div class="category-title"><i class="fas fa-chart-line"></i> Organisation & Performance</div>
+            <div class="test-grid">
+                <div class="test-card" onclick="initTest('ent_performance')">
+                    <h4>Performance d'Activité</h4>
+                    <p>Audit de maturité structurelle : process, délégation et vision stratégique.</p>
+                </div>
+                <div class="test-card" onclick="initTest('ent_equipe')">
+                    <h4>Dysfonctionnements d'Équipe</h4>
+                    <p>Analyse basée sur le modèle de Lencioni : confiance, engagement et résultats.</p>
                 </div>
             </div>
 
-            <div class="category-block">
-                <div class="category-header"><i class="fas fa-user-tie"></i><h2>Carrière & Leadership</h2></div>
-                <div class="test-grid">
-                    <div class="test-card" onclick="initTest('pro_leader')">
-                        <div class="badge-test">Profilage</div><h4>Type de Manager</h4><p>Style de direction : Visionnaire ou Opérationnel.</p>
-                    </div>
-                    <div class="test-card" onclick="initTest('pro_job')">
-                        <div class="badge-test">Ikigai</div><h4>Compatibilité Métier</h4><p>Votre job est-il aligné avec votre nature profonde ?</p>
-                    </div>
-                    <div class="test-card" onclick="initTest('pro_sabot')">
-                        <div class="badge-test">Inconscient</div><h4>Mon Saboteur Pro</h4><p>Quel trait de caractère freine votre ascension ?</p>
-                    </div>
+            <div class="category-title"><i class="fas fa-user-tie"></i> Carrière & Leadership</div>
+            <div class="test-grid">
+                <div class="test-card" onclick="initTest('pro_leader')">
+                    <h4>Style de Leadership</h4>
+                    <p>Grille de Blake et Mouton : équilibre entre résultats et facteur humain.</p>
+                </div>
+                <div class="test-card" onclick="initTest('pro_job')">
+                    <h4>Alignement (Ikigai)</h4>
+                    <p>Votre job est-il aligné avec vos talents et votre mission de vie ?</p>
                 </div>
             </div>
 
-            <div class="category-block">
-                <div class="category-header"><i class="fas fa-heart"></i><h2>Équilibre & Relations</h2></div>
-                <div class="test-grid">
-                    <div class="test-card" onclick="initTest('psy_burnout')">
-                        <div class="badge-test">Santé Mentale</div><h4>Épuisement Invisible</h4><p>Détectez les signaux de Burn-out précocement.</p>
-                    </div>
-                    <div class="test-card" onclick="initTest('couple_comp')">
-                        <div class="badge-test">Harmonie</div><h4>Compatibilité de Couple</h4><p>Alignement des valeurs et vision commune.</p>
-                    </div>
-                    <div class="test-card" onclick="initTest('psy_confiance')">
-                        <div class="badge-test">Psychologie</div><h4>Confiance en Soi</h4><p>Estime personnelle et audace en milieu social.</p>
-                    </div>
+            <div class="category-title"><i class="fas fa-heartbeat"></i> Équilibre & Psychologie</div>
+            <div class="test-grid">
+                <div class="test-card" onclick="initTest('psy_burnout')">
+                    <h4>Épuisement Professionnel</h4>
+                    <p>Inventaire clinique de Maslach (MBI) pour détecter les signaux de rupture.</p>
+                </div>
+                <div class="test-card" onclick="initTest('couple_comp')">
+                    <h4>Harmonie de Couple</h4>
+                    <p>Évaluation des piliers de la relation : communication et valeurs communes.</p>
                 </div>
             </div>
         </div>
 
         <div id="test-interface">
             <div onclick="showSelector()" style="cursor:pointer; color:var(--accent); font-weight:700; margin-bottom:20px;">
-                <i class="fas fa-arrow-left"></i> Retour au centre
+                <i class="fas fa-arrow-left"></i> Retour aux choix
             </div>
             <h2 id="test-title"></h2>
             <div class="progress-bar"><div class="progress-inner" id="progress"></div></div>
+            
             <div id="question-box">
-                <h3 id="question-text" style="margin-bottom: 30px;"></h3>
+                <p id="question-counter" style="color:var(--amber); font-weight:800; text-transform:uppercase;"></p>
+                <h3 id="question-text" style="margin: 20px 0; font-size: 1.6rem; font-weight: 600;"></h3>
                 <div id="options-list"></div>
             </div>
+
             <div id="result-area">
-                <h2 id="res-name" style="font-size: 2.5rem; margin: 15px 0; color: var(--amber);"></h2>
+                <div class="chart-container">
+                    <canvas id="scoreChart"></canvas>
+                </div>
+                <h2 id="res-name" style="font-size: 2.8rem; margin-bottom: 5px; font-weight: 800;"></h2>
                 <div class="advice-box">
-                    <h4 style="margin-bottom: 10px;">Analyse de l'Expert :</h4>
-                    <p id="res-advice"></p>
+                    <h4 id="expert-label" style="margin-bottom: 12px; font-weight: 800; letter-spacing: 1.5px;"></h4>
+                    <p id="res-advice" style="font-size: 1.15rem;"></p>
                 </div>
                 <a href="index.html#contact" id="cta-link" class="btn-cta">
                     <span id="cta-text"></span>
-                    <i class="fas fa-calendar-check"></i>
+                    <i class="fas fa-calendar-alt"></i>
                 </a>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="footer-logo"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
+        <div class="footer-logo">
+            <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH">
+        </div>
         <div class="socials">
             <a href="https://www.linkedin.com/company/cabinet-gestorh/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://www.facebook.com/share/1N1L3mFM6w/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
         </div>
         <p>Lomé, Togo | +228 98 91 23 69 / +228 90 03 61 87</p>
-        <div class="footer-bottom">© 2026 GESTORH | Excellence Humaine.</div>
+        <div class="footer-bottom">
+            © 2026 GESTORH | Excellence Humaine au Togo et à l'International.
+        </div>
     </footer>
 
-    <a href="https://wa.me/22898912369" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <script>
+        // Menu Mobile Logic
         const menuBtn = document.getElementById('menuBtn');
         const navLinks = document.getElementById('navLinks');
         menuBtn.onclick = () => navLinks.classList.toggle('active');
 
+        // Database & Logic (Conservée à l'identique)
         const database = {
-            ent_performance: { title: "Performance d'Activité", questions: [
-                {q: "Vos objectifs sont-ils écrits et suivis ?", a: ["Oui", "En partie", "Non"], p: [3, 1, 0]},
-                {q: "L'activité peut-elle tourner sans vous ?", a: ["Oui", "Difficilement", "Pas du tout"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:2, name:"Structure à consolider", advice:"Votre entreprise possède des bases, mais dépend encore trop de l'improvisation, ce qui limite votre croissance. Un échange avec nos experts permettrait de sécuriser vos revenus et de structurer votre avenir.", cta:"Fixer un rendez-vous conseil"},
-                {min:3, max:6, name:"Excellent Potentiel", advice:"Félicitations ! Votre structure est saine. Pour franchir un nouveau palier et dominer votre secteur, un accompagnement stratégique avec GESTORH fera la différence.", cta:"Passer au niveau supérieur"}
-            ]},
-            ent_equipe: { title: "Dysfonctionnements d'Équipe", questions: [
-                {q: "On se dit les vérités en face ?", a: ["Toujours", "Parfois", "Jamais"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:1, name:"Besoin de cohésion", advice:"La confiance semble altérée. Sans action immédiate, la productivité va stagner. Prenons rendez-vous pour restaurer une dynamique de groupe performante.", cta:"Réserver mon audit d'équipe"},
-                {min:2, max:3, name:"Équipe Saine & Transparente", advice:"Bravo ! C'est une force rare. Pour pérenniser cet atout et prévenir d'éventuels futurs blocages, un suivi périodique avec nos coachs est idéal.", cta:"Maintenir l'excellence d'équipe"}
-            ]},
-            ent_climat: { title: "Climat Social", questions: [
-                {q: "Sentiez-vous de la motivation ?", a: ["Forte", "Moyenne", "Basse"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:1, name:"Alerte Climat Social", advice:"Le moral de vos équipes est en zone de risque. Afin d'éviter des départs massifs, rencontrons-nous pour définir un plan d'action RH urgent.", cta:"Prendre rendez-vous d'urgence"},
-                {min:2, max:3, name:"Atmosphère Inspirante", advice:"Félicitations ! Vos collaborateurs sont engagés. Pour transformer cet engagement en performance durable, découvrez nos méthodes d'optimisation.", cta:"Optimiser mon capital humain"}
-            ]},
-            pro_leader: { title: "Type de Manager", questions: [
-                {q: "Priorité ?", a: ["Vision", "Opérations", "Bien-être"], p: [3, 1, 2]}
-            ], results: [
-                {min:1, max:1, name:"Profil Opérationnel", advice:"Vous maîtrisez le terrain. Pour acquérir la posture de leader inspirant et déléguer efficacement, le coaching GESTORH est votre solution.", cta:"Devenir un leader stratège"},
-                {min:2, max:2, name:"Manager Bienveillant", advice:"L'humain est au cœur de vos actions. Pour allier ce talent à une exigence de résultats sans vous épuiser, échangeons sur votre posture.", cta:"Réserver mon coaching leader"},
-                {min:3, max:3, name:"Leader Visionnaire", advice:"Félicitations, vous portez l'avenir. Pour traduire cette vision en actions concrètes et mobiliser vos équipes, GESTORH vous accompagne.", cta:"Prendre rendez-vous expert"}
-            ]},
-            pro_job: { title: "Ikigai Professionnel", questions: [
-                {q: "Aimez-vous vos tâches ?", a: ["Passionnément", "C'est alimentaire", "Non"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:1, name:"En quête d'alignement", advice:"Votre situation actuelle ne vous épanouit plus. Il est temps de redonner du sens à votre carrière avec un bilan de compétences sur mesure.", cta:"Demander mon bilan de carrière"},
-                {min:2, max:3, name:"Professionnel Épanoui", advice:"Bravo ! Vous avez trouvé votre voie. Pour maximiser votre impact et atteindre vos objectifs les plus ambitieux, discutons de vos prochains défis.", cta:"Propulser mes ambitions"}
-            ]},
-            pro_sabot: { title: "Mon Saboteur Pro", questions: [
-                {q: "Réaction devant l'échec ?", a: ["Apprendre", "Se blâmer", "Abandon"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:1, name:"Blocage Identifié", advice:"Certains schémas vous empêchent d'avancer. Levons ensemble ces barrières psychologiques pour libérer enfin votre réussite.", cta:"Débloquer mon potentiel"},
-                {min:2, max:3, name:"Mentalité de Gagnant", advice:"Félicitations ! Votre résilience est forte. Pour en faire un avantage compétitif irrésistible, contactez nos coachs.", cta:"Renforcer mon leadership"}
-            ]},
-            psy_burnout: { title: "Épuisement Invisible", questions: [
-                {q: "Fatigue au réveil ?", a: ["Souvent", "Parfois", "Jamais"], p: [0, 1, 3]}
-            ], results: [
-                {min:0, max:1, name:"Signaux d'Alerte", advice:"Votre santé est la priorité. Avant d'atteindre le point de rupture, rencontrons-nous pour définir des mesures de protection et de récupération.", cta:"Prendre rendez-vous santé"},
-                {min:2, max:3, name:"Équilibre Préservé", advice:"Bravo, vous gérez bien votre énergie. Pour apprendre à maintenir cet équilibre même en période de haute pression, découvrez nos outils.", cta:"Gérer mon stress durablement"}
-            ]},
-            couple_comp: { title: "Compatibilité Couple", questions: [
-                {q: "Vision à 5 ans commune ?", a: ["Oui", "Floue", "Non"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:1, name:"Défis de communication", advice:"Vos projets ne semblent plus alignés. Une médiation avec nos psychologues experts peut vous aider à reconstruire une vision commune.", cta:"Harmoniser mon couple"},
-                {min:2, max:3, name:"Duo Fusionnel", advice:"Félicitations ! Votre complicité est une force. Pour aborder vos futures étapes de vie avec sérénité, échangeons sur vos projets.", cta:"Construire notre avenir"}
-            ]},
-            psy_confiance: { title: "Confiance en Soi", questions: [
-                {q: "Peur du jugement ?", a: ["Non", "Un peu", "Beaucoup"], p: [3, 1, 0]}
-            ], results: [
-                {min:0, max:1, name:"Potentiel à révéler", advice:"Vos doutes freinent vos opportunités. Le coaching d'affirmation de soi GESTORH vous permettra de prendre enfin votre place.", cta:"Prendre confiance en moi"},
-                {min:2, max:3, name:"Assurance Affirmée", advice:"Bravo ! Vous avancez avec aplomb. Pour transformer cette assurance en charisme d'influence, contactez-nous pour un coaching.", cta:"Développer mon charisme"}
-            ]}
+            ent_performance: {
+                title: "Audit de Performance Organisationnelle",
+                questions: [
+                    {q: "Les objectifs stratégiques sont-ils traduits en indicateurs (KPI) ?", a: ["Oui, suivis par tous", "En partie / Flous", "Non, aucun suivi"], p: [2, 1, 0]},
+                    {q: "Existe-t-il des manuels de procédures écrits pour chaque poste ?", a: ["Oui, à jour", "Pour certains postes", "Non, tout est oral"], p: [2, 1, 0]},
+                    {q: "Le dirigeant peut-il s'absenter 3 semaines sans impact sur le CA ?", a: ["Oui, autonomie totale", "Difficilement", "Impossible"], p: [2, 1, 0]},
+                    {q: "Utilisez-vous un plan de trésorerie prévisionnel à 12 mois ?", a: ["Oui, pilotage précis", "De façon irrégulière", "Non, pilotage à vue"], p: [2, 1, 0]},
+                    {q: "Le recrutement est-il basé sur une fiche de poste et des valeurs ?", a: ["Toujours", "Parfois / Urgence", "Au feeling uniquement"], p: [2, 1, 0]},
+                    {q: "Votre technologie actuelle soutient-elle votre croissance ?", a: ["Oui, c'est un levier", "Elle est obsolète", "Elle nous freine"], p: [2, 1, 0]}
+                ],
+                results: [
+                    {min:0, max:5, name:"Structure Fragile", advice:"Votre entreprise repose sur l'improvisation et votre présence constante. Sans structuration immédiate, vous risquez l'épuisement ou la stagnation. Une mise à plat de vos process est vitale.", cta:"Urgence : Sécuriser mon activité"},
+                    {min:6, max:12, name:"Potentiel de Croissance", advice:"Bonnes bases ! Pour franchir un nouveau palier et automatiser vos revenus, un accompagnement stratégique GESTORH vous permettra de devenir leader de votre secteur.", cta:"Passer au niveau supérieur"}
+                ]
+            },
+            ent_equipe: {
+                title: "Diagnostic Cohésion (Modèle Lencioni)",
+                questions: [
+                    {q: "Les membres admettent-ils leurs erreurs sans crainte du jugement ?", a: ["Toujours (Confiance)", "Rarement", "Jamais (Protection)"], p: [2, 1, 0]},
+                    {q: "Le manager est-il le seul à recadrer les performances ?", a: ["Non, auto-régulation", "Souvent oui", "Exclusivement"], p: [2, 1, 0]},
+                    {q: "Les réunions débouchent-elles sur des engagements concrets ?", a: ["Systématiquement", "C'est souvent flou", "Presque jamais"], p: [2, 1, 0]},
+                    {q: "L'intérêt collectif passe-t-il avant les ego individuels ?", a: ["Oui, équipe soudée", "Parfois", "Chacun pour soi"], p: [2, 1, 0]},
+                    {q: "Les désaccords sont-ils résolus de façon constructive ?", a: ["Oui, débat sain", "On évite les vagues", "C'est conflictuel"], p: [2, 1, 0]},
+                    {q: "Chacun connaît-il l'impact de son travail sur les résultats ?", a: ["Oui, vision claire", "Plus ou moins", "Pas du tout"], p: [2, 1, 0]}
+                ],
+                results: [
+                    {min:0, max:5, name:"Silos & Dysfonctionnements", advice:"L'équipe manque de confiance et de responsabilité partagée. Cela impacte lourdement votre productivité. Un Teambuilding stratégique est urgent pour rétablir la cohésion.", cta:"Réparer la dynamique d'équipe"},
+                    {min:6, max:12, name:"Équipe Unifiée", advice:"Bravo ! Vous avez une base solide. Pour transformer cette entente en machine à résultats, discutons de nos méthodes d'optimisation de la performance collective.", cta:"Pousser nos performances"}
+                ]
+            },
+            pro_job: {
+                title: "Diagnostic Ikigai Professionnel",
+                questions: [
+                    {q: "Ressentez-vous une satisfaction réelle après une journée de travail ?", a: ["Quotidiennement", "Rarement", "Jamais"], p: [2, 1, 0]},
+                    {q: "Vos compétences sont-elles exploitées à leur plein potentiel ?", a: ["Oui, je grandis", "Partiellement", "Non, je stagne"], p: [2, 1, 0]},
+                    {q: "Votre travail contribue-t-il à une cause qui vous dépasse ?", a: ["Oui, c'est porteur", "Pas vraiment", "Pas du tout"], p: [2, 1, 0]},
+                    {q: "Perdez-vous la notion du temps lors de vos tâches (État de Flow) ?", a: ["Souvent", "Occasionnellement", "Jamais"], p: [2, 1, 0]},
+                    {q: "Le niveau de rémunération correspond-il à votre valeur ?", a: ["Oui", "Juste assez", "Non"], p: [2, 1, 0]},
+                    {q: "Êtes-vous fier d'annoncer votre métier en public ?", a: ["Oui, absolument", "Moyennement", "Non"], p: [2, 1, 0]}
+                ],
+                results: [
+                    {min:0, max:5, name:"Désalignement Profond", advice:"Vous êtes dans une zone de survie. Ce décalage entre vos besoins profonds et votre quotidien est un risque majeur pour votre santé. Un bilan de carrière s'impose.", cta:"Redonner du sens à ma vie pro"},
+                    {min:6, max:12, name:"En Quête d'Accomplissement", advice:"Vous avez trouvé votre voie mais l'excellence n'est pas encore là. Travaillons sur l'alignement de vos talents avec vos ambitions.", cta:"Débloquer mon potentiel"}
+                ]
+            },
+            pro_leader: {
+                title: "Évaluation du Style de Leadership",
+                questions: [
+                    {q: "Priorité lors d'une crise ?", a: ["Le résultat", "Le moral des troupes", "L'analyse"], p: [2, 1, 0]},
+                    {q: "Comment gérez-vous la délégation ?", a: ["Confiance totale", "Je contrôle tout", "Je fais moi-même"], p: [2, 1, 0]},
+                    {q: "Fréquence du feedback constructif ?", a: ["Hebdomadaire", "Annuelle", "Rarement"], p: [2, 1, 0]},
+                    {q: "Votre équipe propose-t-elle des idées disruptives ?", a: ["Oui, encouragé", "Si c'est sûr", "Non, on suit l'ordre"], p: [2, 1, 0]},
+                    {q: "Consacrez-vous du temps au coaching des autres ?", a: ["Oui, c'est ma mission", "Si j'ai le temps", "Ce n'est pas mon rôle"], p: [2, 1, 0]},
+                    {q: "Réaction au changement ?", a: ["Écoute / Adhésion", "Autorité", "Évitement"], p: [2, 1, 0]}
+                ],
+                results: [
+                    {min:0, max:5, name:"Manager Opérationnel", advice:"Leadership centré sur l'exécution. Pour devenir un leader inspirant et démultiplier votre impact, une évolution de posture est nécessaire via le coaching.", cta:"Devenir un leader stratège"},
+                    {min:6, max:12, name:"Leader Visionnaire", advice:"Bravo ! Vous alliez exigence et humain. Pour transformer cette capacité en levier exponentiel, perfectionnez votre art de l'influence.", cta:"Affirmer mon impact"}
+                ]
+            },
+            psy_burnout: {
+                title: "Inventaire d'Épuisement (MBI)",
+                questions: [
+                    {q: "Fatigue que le sommeil ne répare plus ?", a: ["Chaque matin", "Régulièrement", "Rarement"], p: [0, 1, 2]},
+                    {q: "Perte de plaisir dans vos missions habituelles ?", a: ["Totale", "Parfois", "Pas du tout"], p: [0, 1, 2]},
+                    {q: "Irritabilité accrue avec les collègues/proches ?", a: ["Oui, constante", "Un peu", "Non"], p: [0, 1, 2]},
+                    {q: "Douleurs physiques inexpliquées (dos, ventre) ?", a: ["Fréquentes", "Occasionnelles", "Jamais"], p: [0, 1, 2]},
+                    {q: "Concentration en baisse constante ?", a: ["Oui", "Sous stress", "Non"], p: [0, 1, 2]},
+                    {q: "Le travail envahit vos week-ends et pensées ?", a: ["Toujours", "Souvent", "Rarement"], p: [0, 1, 2]}
+                ],
+                results: [
+                    {min:0, max:5, name:"Alerte Burn-out Critique", advice:"Vos indicateurs sont au rouge. Votre santé mentale est en péril immédiat. Arrêtez-vous et consultez pour établir un plan de récupération urgent.", cta:"Prendre RDV Santé (Urgent)"},
+                    {min:6, max:12, name:"Vigilance Nécessaire", advice:"Vous êtes sous pression. Apprendre à poser des limites et à déléguer est essentiel pour ne pas basculer. GESTORH vous accompagne dans cette transition.", cta:"Apprendre à gérer ma charge"}
+                ]
+            },
+            couple_comp: {
+                title: "Bilan d'Harmonie de Couple",
+                questions: [
+                    {q: "Partagez-vous une vision de vie commune à 5 ans ?", a: ["Oui, clairement", "C'est flou", "Pas du tout"], p: [2, 1, 0]},
+                    {q: "Soutien mutuel lors des crises ?", a: ["Indéfectible", "Inconstant", "Absent"], p: [2, 1, 0]},
+                    {q: "Fin des désaccords ?", a: ["Apaisement", "Silence tendu", "Reproches"], p: [2, 1, 0]},
+                    {q: "Temps de qualité sans écrans ?", a: ["Régulièrement", "Rarement", "Jamais"], p: [2, 1, 0]},
+                    {q: "Admiration mutuelle exprimée ?", a: ["Souvent", "Parfois", "Rarement"], p: [2, 1, 0]},
+                    {q: "Valeurs fondamentales alignées ?", a: ["Totalement", "Frictions", "Opposées"], p: [2, 1, 0]}
+                ],
+                results: [
+                    {min:0, max:5, name:"Zone de Fragilité", advice:"Les fondations sont ébranlées. Une médiation experte est cruciale pour rétablir une communication saine avant la rupture. Ne laissez pas la situation s'aggraver.", cta:"Reconstruire mon couple"},
+                    {min:6, max:12, name:"Harmonie Solide", advice:"Relation forte ! Pour continuer de croître ensemble et relever vos prochains défis de vie, découvrez nos ateliers de développement du couple.", cta:"S'épanouir davantage à deux"}
+                ]
+            }
         };
 
-        let activeTest = null, currentIdx = 0, score = 0;
+        let activeTest = null, currentIdx = 0, score = 0, myChart = null;
 
         function initTest(cat) {
             activeTest = database[cat]; currentIdx = 0; score = 0;
@@ -285,32 +307,48 @@
 
         function renderQuestion() {
             const qData = activeTest.questions[currentIdx];
-            document.getElementById('progress').style.width = (currentIdx / activeTest.questions.length) * 100 + "%";
+            document.getElementById('progress').style.width = ((currentIdx + 1) / activeTest.questions.length) * 100 + "%";
+            document.getElementById('question-counter').innerText = `Question ${currentIdx + 1} / ${activeTest.questions.length}`;
             document.getElementById('question-text').innerText = qData.q;
             const list = document.getElementById('options-list'); list.innerHTML = "";
             qData.a.forEach((label, i) => {
                 const btn = document.createElement('button'); btn.className = "option-btn"; btn.innerText = label;
-                btn.onclick = () => { 
-                    score += qData.p[i]; currentIdx++; 
-                    currentIdx < activeTest.questions.length ? renderQuestion() : showResult(); 
-                };
+                btn.onclick = () => { score += qData.p[i]; currentIdx++; currentIdx < activeTest.questions.length ? renderQuestion() : showResult(); };
                 list.appendChild(btn);
             });
         }
 
         function showResult() {
             document.getElementById('question-box').style.display = 'none';
-            document.getElementById('progress').style.width = "100%";
             document.getElementById('result-area').style.display = 'block';
+            const maxScore = activeTest.questions.length * 2;
+            const percent = Math.round((score / maxScore) * 100);
             const res = activeTest.results.find(r => score >= r.min && score <= r.max);
+            let color = "", btnClass = "", label = "";
+            if(percent < 40) { color = "#ef4444"; btnClass = "bg-red"; label = "DIAGNOSTIC CRITIQUE"; }
+            else if(percent < 75) { color = "#f59e0b"; btnClass = "bg-orange"; label = "DIAGNOSTIC À VIGILANCE"; }
+            else { color = "#22c55e"; btnClass = "bg-green"; label = "DIAGNOSTIC OPTIMAL"; }
             document.getElementById('res-name').innerText = res.name;
+            document.getElementById('res-name').style.color = color;
+            document.getElementById('expert-label').innerText = label;
+            document.getElementById('expert-label').style.color = color;
             document.getElementById('res-advice').innerText = res.advice;
             document.getElementById('cta-text').innerText = res.cta;
+            document.getElementById('cta-link').className = "btn-cta " + btnClass;
+            document.querySelector('.advice-box').className = "advice-box status-" + (percent < 40 ? "red" : percent < 75 ? "orange" : "green");
+            if(myChart) myChart.destroy();
+            const ctx = document.getElementById('scoreChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: { datasets: [{ data: [percent, 100 - percent], backgroundColor: [color, "#edf2f7"], borderWidth: 0 }] },
+                options: { cutout: '85%', plugins: { tooltip: {enabled: false} }, events: [] }
+            });
         }
 
         function showSelector() {
             document.getElementById('test-interface').style.display = 'none';
             document.getElementById('selector-view').style.display = 'block';
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
