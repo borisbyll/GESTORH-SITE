@@ -91,7 +91,7 @@
         .testi-card { background: white; padding: 40px; border-radius: 20px; border-left: 6px solid var(--amber); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .stars { color: #ffc107; margin-bottom: 15px; }
 
-        /* CONTACT FORM - MAKE READY */
+        /* CONTACT FORM */
         .contact-section { background: var(--bg-light); padding: 100px 8%; }
         .contact-container { max-width: 900px; margin: 0 auto; }
         .contact-form { background: white; padding: 50px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
@@ -105,70 +105,32 @@
         .form-group label { display: block; font-weight: 700; font-size: 0.8rem; margin-bottom: 8px; color: var(--primary); text-transform: uppercase; }
         input, select, textarea { width: 100%; padding: 15px; border: 1px solid #e2e8f0; border-radius: 10px; font-family: inherit; }
         .submit-btn { background: var(--primary); color: white; width: 100%; padding: 20px; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+
         /* SECTION LOCALISATION CHARTE GESTORH */
-.location-section {
-    padding: 60px 8%;
-    background: var(--white);
-    text-align: center;
-}
+        .location-section { padding: 80px 8%; background: var(--white); text-align: center; }
+        .category-title { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--primary); }
+        .location-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center; margin-top: 20px; }
+        .location-info { text-align: left; padding: 35px; background: var(--bg-light); border-radius: 20px; border-left: 8px solid var(--amber); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .location-info h3 { color: var(--accent); font-size: 1.6rem; margin-bottom: 20px; font-weight: 800; }
+        .info-item { display: flex; align-items: flex-start; margin-bottom: 20px; gap: 15px; }
+        .info-item i { color: var(--amber); font-size: 1.3rem; margin-top: 3px; }
+        .map-container { width: 100%; height: 450px; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 4px solid var(--white); }
+        
+        /* Correction Action Btn invisible */
+        .action-btn { 
+            background: var(--accent); 
+            color: white !important; 
+            padding: 15px 25px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-weight: 800; 
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .action-btn:hover { background: var(--primary); transform: translateY(-3px); }
 
-.location-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.location-info {
-    text-align: left;
-    padding: 30px;
-    background: var(--bg-light);
-    border-radius: 20px;
-    border-left: 8px solid var(--amber);
-}
-
-.location-info h3 {
-    color: var(--accent);
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    font-weight: 800;
-}
-
-.info-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
-    gap: 15px;
-}
-
-.info-item i {
-    color: var(--amber);
-    font-size: 1.2rem;
-    margin-top: 5px;
-}
-
-.map-container {
-    width: 100%;
-    height: 450px;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    border: 4px solid var(--white);
-}
-
-@media (max-width: 968px) {
-    .location-grid { grid-template-columns: 1fr; }
-    .location-info { order: 2; }
-    .map-container { order: 1; height: 300px; }
-}
-
-@media (max-width: 968px) {
-    .location-grid { grid-template-columns: 1fr; }
-    .location-info { order: 2; }
-    .map-container { order: 1; height: 300px; }
-}
-        /* FOOTER & WHATSAPP RECTIFIÉS */
+        /* FOOTER & WHATSAPP */
         .wa-footer-cta { margin-top: 40px; text-align: center; }
         .wa-btn-large { display: inline-flex; align-items: center; background: #25d366; color: white; padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; transition: 0.3s; }
         .wa-btn-large i { font-size: 1.5rem; margin-right: 12px; }
@@ -194,6 +156,8 @@
             .form-grid-2 { grid-template-columns: 1fr; }
             .hero-btns { display: flex; flex-direction: column; gap: 15px; }
             .btn-secondary { margin-left: 0; }
+            .location-grid { grid-template-columns: 1fr; }
+            .map-container { height: 350px; }
         }
     </style>
 </head>
@@ -334,38 +298,37 @@
             </div>
         </div>
     </section>
-    <section class="location-section" id="localisation">
-    <div class="category-title"><i class="fas fa-map-marker-alt"></i> Nous rencontrer au Cabinet</div>
-    
-    <div class="location-grid">
-        <div class="location-info">
-            <h3>GESTORH Lomé</h3>
-            <div class="info-item">
-                <i class="fas fa-location-dot"></i>
-                <p>Quartier Hédzranawoé, non loin de l'école Aimé Césaire<br>Lomé, Togo</p>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-clock"></i>
-                <p>Lun - Ven : 08:00 – 18:00<br>Samedi : 09:00 – 16:00</p>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <p>+228 98 91 23 69<br>+228 90 03 61 87</p>
-            </div>
-            <a href="https://www.google.com/maps/dir//Cabinet+GESTORH,+Lom%C3%A9/@6.2163989,1.1983359,17z" 
-               target="_blank" class="action-btn" style="text-decoration:none; display:inline-block; text-align:center;">
-                <i class="fas fa-directions"></i> Itinéraire Google Maps
-            </a>
-        </div>
 
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3966.425121980838!2d1.198335914769065!3d6.216398895498424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1021e3001571d157%3A0x8cebf9b8b110f765!2sCabinet%20GESTORH!5e0!3m2!1sfr!2stg!4v1700000000000!5m2!1sfr!2stg" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
+    <section class="location-section reveal" id="localisation">
+        <h2 class="section-title">Nous rencontrer au Cabinet</h2>
+        <div class="location-grid">
+            <div class="location-info">
+                <h3>GESTORH Lomé</h3>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Quartier Agoè-Anomé, non loin de l'échangeur d'Agoè<br>Lomé, Togo</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Lun - Ven : 08:00 – 18:00<br>Samedi : Sur rendez-vous</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+228 98 91 23 69<br>+228 90 03 61 87</p>
+                </div>
+                <a href="https://maps.app.goo.gl/qX8W8oPqC89k1K6A7" target="_blank" class="action-btn">
+                    <i class="fas fa-directions"></i> Itinéraire Google Maps
+                </a>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d1.1961!3d6.1947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e1c111111111%3A0x1111111111111111!2sGESTORH!5e0!3m2!1sfr!2stg!4v1715000000000!5m2!1sfr!2stg" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <footer>
         <div class="footer-logo"><img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH"></div>
@@ -437,7 +400,6 @@
     </script>
 </body>
 </html>
-
 
 
 
