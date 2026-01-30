@@ -138,13 +138,19 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* CORRECTIONS RESPONSIVE MOBILE */
         @media (max-width: 1024px) {
-            .menu-btn { display: block; }
+            .menu-btn { display: block !important; visibility: visible !important; }
             .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: white; flex-direction: column; justify-content: center; transition: 0.5s; z-index: 9998; box-shadow: -10px 0 30px rgba(0,0,0,0.1); }
             .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; margin-left: 0; }
+            
+            /* Rendre la grille d'impact responsive */
+            .stats-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            
             .location-grid { grid-template-columns: 1fr; }
             .map-container { height: 350px; }
+            .form-grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -313,7 +319,7 @@
         </div>
     </section>
 
- <footer>
+    <footer>
         <div class="footer-logo">
             <img src="Nouveau logo gestorh end end_Plan de travail 1 copie.png" alt="GESTORH">
         </div>
@@ -405,8 +411,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
