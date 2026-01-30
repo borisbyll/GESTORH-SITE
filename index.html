@@ -145,9 +145,12 @@
             .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; margin-left: 0; }
             
-            /* Rendre la grille d'impact responsive */
+            /* Centrage des boutons Hero sur Mobile */
+            .hero-btns { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+            .btn-secondary { margin-left: 0; width: 100%; max-width: 300px; }
+            .btn-cta { width: 100%; max-width: 300px; }
+
             .stats-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-            
             .location-grid { grid-template-columns: 1fr; }
             .map-container { height: 350px; }
             .form-grid-2 { grid-template-columns: 1fr; }
@@ -411,6 +414,7 @@
     </script>
 </body>
 </html>
+
 
 
 
